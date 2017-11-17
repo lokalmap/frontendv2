@@ -1,0 +1,30 @@
+<!-- <h1>testing!</h1>
+<div class="input-group">
+  <span class="input-group-btn">
+    <button class="btn btn-secondary" type="button" (click)="getPost(uidt.value)">getPost</button>
+  </span>
+  <input type="text" class="form-control" #uidt placeholder="userId...">
+</div>
+<p>
+  ___________________________
+</p>
+<button type="button" class="btn btn-primary" (click)="sendPost()">Click me! sendPost</button>
+<div *ngFor="let post of posts | async">
+  {{post | json }}
+</div>
+<button type="button" class="btn btn-primary" (click)="createPost()">Click me! createPost</button>
+{{ newPost | async | json }}  -->
+
+
+
+<div *ngIf="lat && lng" class="map_holder mt-3">
+
+  <agm-map class="map_side_cust" style="height: 600px" [latitude]="lat" [longitude]="lng" [zoom]="17">
+    <agm-marker [latitude]="lat" [longitude]="lng">
+      <agm-info-window>
+        <h3><strong>Howdy!</strong></h3>
+        <p>You are here!</p>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
+</div>

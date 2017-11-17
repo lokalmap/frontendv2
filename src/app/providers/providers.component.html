@@ -1,0 +1,58 @@
+  <header class="app-header navbar">
+    <!--<button class="navbar-toggler d-lg-none" type="button" (click)="testf()" >&#9776;</button>-->
+    <a class="navbar-brand" [routerLink]="['/']"></a>
+    <ul class="nav navbar-nav mr-auto d-md-down-none">
+        <li class="nav-item">
+            <a class="nav-link navbar-toggler" href="" appSidebarToggler>&#9776;</a>
+        </li>
+    </ul>
+</header>
+<div class="app-body">
+    <div class="sidebar">
+        <nav class="sidebar-nav">
+            <ul class="nav">
+                <li class="nav-item">
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/providers/dashboard']"><i class="icon-speedometer"></i> Dashboard <span class="badge badge-info">NEW</span></a>
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/providers/pbookings']"><i class="icon-speedometer"></i> Bookings <span class="badge badge-info">NEW</span></a>
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/providers/inventory']"><i class="icon-speedometer"></i> Inventory <span class="badge badge-info">NEW</span></a>
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/providers/summary']"><i class="icon-speedometer"></i> List Summary <span class="badge badge-info">NEW</span></a>
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/providers/statistics']"><i class="icon-speedometer"></i> Statistics <span class="badge badge-info">NEW</span></a>
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/providers/chat']"><i class="icon-speedometer"></i> Chat <span class="badge badge-info">NEW</span></a>
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/providers/ads']"><i class="icon-speedometer"></i> Ads <span class="badge badge-info">NEW</span></a>
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/providers/search']"><i class="icon-speedometer"></i> Search <span class="badge badge-info">NEW</span></a>
+                </li>
+                <li class="divider m-h"></li>
+                <li class="nav-title">
+                  System Utilization
+                </li>
+                <li class="nav-item px-1 hidden-cn">
+                  <div class="text-uppercase mb-q"><small><b>CPU Usage</b></small></div>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <small class="text-muted">348 Processes. 1/4 Cores.</small>
+                </li>
+                <li class="nav-item px-1 hidden-cn">
+                  <div class="text-uppercase mb-q"><small><b>Memory Usage</b></small></div>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <small class="text-muted">11444GB/16384MB</small>
+                </li>
+                <li class="nav-item px-1 hidden-cn">
+                  <div class="text-uppercase mb-q"><small><b>SSD 1 Usage</b></small></div>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <small class="text-muted">243GB/256GB</small>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <main class="main">
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+        </div>
+        <!-- /.conainer-fluid -->
+    </main>
+</div>

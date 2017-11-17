@@ -1,0 +1,108 @@
+<div class="row">
+  <div class="col-12 text-right">
+    <button type="button" class="btn btn-outline-success btn-sm" (click)="openModal(tmptmodalsuccess)">ADD</button>
+    <button type="button" class="btn btn-outline-warning btn-sm" (click)="openModal(tmptmodalwarning)">MODIFY</button>
+    <button type="button" class="btn btn-outline-danger btn-sm" (click)="openModal(tmptmodaldanger)">DELETE</button>
+  </div>
+</div>
+
+<ng-template #tmptmodalsuccess>
+  <div class="modal-success" role="document">
+    <div class="modal-header">
+      <h3 class="modal-title  pull-left">
+        Enter Value
+      </h3>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div> <!--modal-success -->
+  <div class="modal-body">
+
+    <div class="form-group">
+      <div class="animated fadeIn">
+        <div class="card email-app">
+          <nav>
+            <a href="#" class="btn btn-danger btn-block">Clear Entry</a>
+            <ul class="nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-star"></i> Common <span class="badge badge-danger">4</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-star"></i> Tags / Caption</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-star"></i> Pictures </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-star"></i> Misc</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-bookmark"></i> Preview <span class="badge badge-info">5</span></a>
+              </li>
+            </ul>
+          </nav>
+          <main>
+            <div class="form-group">
+              <label for="company">Name</label>
+              <input type="text" class="form-control" id="inptName" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+              <label for="company">Price</label>
+              <input type="text" class="form-control" id="inptPrice" placeholder="Enter price">
+            </div>
+            <div class="form-group">
+              <label for="company">Category</label>
+              <input type="text" class="form-control" id="inptCat" placeholder="Enter category">
+            </div>
+            <div class="form-group">
+              <label for="company">Quantity</label>
+              <input type="text" class="form-control" id="inptQuant" placeholder="Enter quantity">
+            </div>
+          </main>
+        </div> <!--card email-app -->
+      </div>
+    </div>
+
+  </div>
+</ng-template>
+
+<ng-template #tmptmodalwarning>
+  <div class="modal-warning" role="document">
+    <div class="modal-header">
+      <h4 class="modal-title  pull-left">
+        Modal
+      </h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div> <!--modal-success -->
+  <div class="modal-body">
+    This is a modal.
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
+    <button type="button" class="btn btn-primary">Save changes</button>
+  </div>
+</ng-template>
+
+<ng-template #tmptmodaldanger>
+  <div class="modal-danger" role="document">
+    <div class="modal-header">
+      <h4 class="modal-title  pull-left">
+        Modal
+      </h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div> <!--modal-success -->
+  <div class="modal-body">
+    This is a modal.
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
+    <button type="button" class="btn btn-primary">Save changes</button>
+  </div>
+</ng-template>
