@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-
+import { routerTransition } from '../../router.animations';
 @Component({
   selector: 'app-cchat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss']
+  styleUrls: ['./chat.component.scss'],
+  animations: [routerTransition()]
 })
-export class CChatComponent implements OnInit {
+export class CchatComponent implements OnInit {
 
   constructor() { }
 
@@ -13,3 +14,7 @@ export class CChatComponent implements OnInit {
   }
 
 }
+
+//<div [@routerTransition]>
+
+//</div>

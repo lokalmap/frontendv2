@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout.component';
+import { InfoComponent } from '../info/info.component';
 
 const routes: Routes = [
     {
         path: '', component: LayoutComponent,
         children: [
             { path: 'home', loadChildren: '../home/home.module#HomeModule' },
+            { path: 'bookings', loadChildren: '../cbookings/cbookings.module#CbookingsModule' },
+            { path: 'history', loadChildren: '../history/history.module#HistoryModule' },
+            { path: 'chat', loadChildren: '../chat/chat.module#CchatModule' },
+            { path: 'track', loadChildren: '../../shared/components/track/track.module#TrackModule' },
+            { path: 'info', component: InfoComponent},
             { path: 'dashboard', loadChildren: '../../layout/dashboard/dashboard.module#DashboardModule' },
             { path: 'charts', loadChildren: '../../layout/charts/charts.module#ChartsModule' },
             { path: 'tables', loadChildren: '../../layout/tables/tables.module#TablesModule' },
-            { path: 'forms', loadChildren: '../../layout/form/form.module#FormModule' },
             { path: 'bs-element', loadChildren: '../../layout/bs-element/bs-element.module#BsElementModule' },
             { path: 'grid', loadChildren: '../../layout/grid/grid.module#GridModule' },
             { path: 'components', loadChildren: '../../layout/bs-component/bs-component.module#BsComponentModule' },
