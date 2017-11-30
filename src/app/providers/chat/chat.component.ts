@@ -7,7 +7,7 @@ import { routerTransition } from '../../router.animations';
   styleUrls: ['./chat.component.scss'],
   animations: [routerTransition()]
 })
-export class PChatComponent implements OnInit {
+export class PchatComponent implements OnInit {
 
   constructor() { }
 

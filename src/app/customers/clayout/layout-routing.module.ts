@@ -10,7 +10,7 @@ const routes: Routes = [
             { path: 'home', loadChildren: '../home/home.module#HomeModule' },
             { path: 'bookings', loadChildren: '../cbookings/cbookings.module#CbookingsModule' },
             { path: 'history', loadChildren: '../history/history.module#HistoryModule' },
-            { path: 'chat', loadChildren: '../chat/chat.module#CchatModule' },
+            { path: 'chat', loadChildren: '../cchat/cchat.module#CchatModule' },
             { path: 'track', loadChildren: '../../shared/components/track/track.module#TrackModule' },
             { path: 'info', component: InfoComponent},
             { path: 'dashboard', loadChildren: '../../layout/dashboard/dashboard.module#DashboardModule' },
@@ -18,6 +18,7 @@ const routes: Routes = [
             { path: 'tables', loadChildren: '../../layout/tables/tables.module#TablesModule' },
             { path: 'bs-element', loadChildren: '../../layout/bs-element/bs-element.module#BsElementModule' },
             { path: 'grid', loadChildren: '../../layout/grid/grid.module#GridModule' },
+            { path: 'form', loadChildren: '../../layout/form/form.module#FormModule' },
             { path: 'components', loadChildren: '../../layout/bs-component/bs-component.module#BsComponentModule' },
             { path: 'blank-page', loadChildren: '../../layout/blank-page/blank-page.module#BlankPageModule' },
         ]
