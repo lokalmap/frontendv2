@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AlertService, AuthenticationService } from '../services/index';
+import { AlertService, AuthenticationService, UserService } from '../services/index';
 
 import { routerTransition } from '../router.animations';
 
@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit {
       private route: ActivatedRoute,
       private router: Router,
       private authenticationService: AuthenticationService,
-      private alertService: AlertService) { }
+      private alertService: AlertService,
+      private userService: UserService,) { }
 
       ngOnInit() {
           // reset login status
@@ -31,15 +32,30 @@ export class LoginComponent implements OnInit {
       }
       login() {
           this.loading = true;
-          this.authenticationService.login(this.model.username, this.model.password)
+          console.log("this.model.password " + this.model.password);
+          this.userService.userloginreq(this.model)
               .subscribe(
                   data => {
-                      this.router.navigate([this.returnUrl]);
+                    localStorage.setItem('isLoggedin', 'true');
+                      this.alertService.success('Login successful', true);
+                      console.log('alert : : ' + data);
+                      this.router.navigate(['/customers']);
                   },
                   error => {
                       this.alertService.error(error);
                       this.loading = false;
                   });
+          /*
+          this.authenticationService.login(this.model.username, this.model.password)
+              .subscribe(
+                  data => {
+                      this.router.navigate([thi s.returnUrl]);
+                  },
+                  error => {
+                      this.alertService.error(error);
+                      this.loading = false;
+                  });
+                  */
       }
 
 }

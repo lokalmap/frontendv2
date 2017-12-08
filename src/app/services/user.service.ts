@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
-import { User } from '../_models/index';
+import { User, Loginuserobj } from '../_models';
 
 @Injectable()
 export class UserService {
@@ -27,4 +27,9 @@ export class UserService {
     delete(_id: string) {
         return this.http.delete('/UsersDetails/' + _id);
     }
+
+    userloginreq(loginuserobj: Loginuserobj) {
+        return this.http.post('/UsersDetails/login', loginuserobj);
+    }
+
 }
