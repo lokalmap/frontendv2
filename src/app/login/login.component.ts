@@ -31,6 +31,18 @@ export class LoginComponent implements OnInit {
           this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/customers/home';
       }
       login() {
+        this.authenticationService.login(this.model.username, this.model.password);
+      }
+          /*
+          .subscribe(
+              data => {
+                localStorage.setItem('isLoggedin', 'true');
+                  this.router.navigate([this.returnUrl]);
+              },
+              error => {
+                  this.alertService.error(error);
+                  this.loading = false;
+              });
           this.loading = true;
           console.log("this.model.password " + this.model.password);
           this.userService.userloginreq(this.model)
@@ -45,7 +57,7 @@ export class LoginComponent implements OnInit {
                       this.alertService.error(error);
                       this.loading = false;
                   });
-          /*
+
           this.authenticationService.login(this.model.username, this.model.password)
               .subscribe(
                   data => {
@@ -56,6 +68,5 @@ export class LoginComponent implements OnInit {
                       this.loading = false;
                   });
                   */
-      }
 
 }
