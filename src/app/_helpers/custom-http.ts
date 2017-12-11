@@ -14,7 +14,16 @@ export class CustomHttp extends Http {
     }
 
     get(url: string, options?: RequestOptionsArgs): Observable<Response> {
-        return super.get(appConfig.apiUrl + url, this.addJwt(options)).catch(this.handleError);
+
+      if (url.indexOf('/assets/i18n') !== -1) {
+          return super.get('http://localhost:4200' + url, this.addJwt(options)).catch(this.handleError);
+          //temporary fix.. language can be served by the backend server.
+        }
+        else{
+          return super.get(appConfig.apiUrl + url, this.addJwt(options)).catch(this.handleError);
+        }
+
+
     }
 
     post(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
