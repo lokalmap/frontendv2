@@ -12,8 +12,14 @@ export class UserService {
         return this.http.get('/UsersDetails').map((response: Response) => response.json());
     }
 
-    getById(_id: string) {
-        return this.http.get('/UsersDetails/' + _id).map((response: Response) => response.json());
+    getById(currentUID: string, beJWT: string) {
+        return this.http.get('/UsersDetails/'+currentUID+'?access_token='+beJWT)
+        .map(
+          (response: Response) =>
+          {
+            return  response.json().accountType;
+          }
+        );
     }
 
     create(user: User) {

@@ -28,7 +28,7 @@ export class SignupComponent {
         .subscribe(
             data => {
                 this.alertService.success('Registration successful', true);
-                console.log('alert');
+                console.log('ok');
                 this.router.navigate(['/login']);
             },
             error => {
