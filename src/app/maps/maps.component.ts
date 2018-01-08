@@ -31,7 +31,6 @@ export class MapsComponent implements OnInit {
         }
     }
     ngOnInit() {
-
       this.searchControl = new FormControl();
       this.setCurrentPosition(); //set current position
       //load Places Autocomplete

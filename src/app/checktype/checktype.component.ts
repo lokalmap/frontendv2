@@ -15,22 +15,24 @@ export class CheckTypeComponent {
       private router: Router,
       private userService: UserService) { }
 
+      ngOnInit()
+      {
+        this.userService.getById(localStorage.getItem("currentUID"), localStorage.getItem("beJWT")).subscribe(
+            result => {
+              result;
+                if(result === 'Provider'){
+                  localStorage.setItem('daan','/providers');
+                  console.log("inside provider : ", localStorage.getItem("daan"));
+                }else if (result === 'Customer'){
+                  localStorage.setItem('daan','/customers');
+                  console.log("inside customer : ", localStorage.getItem("daan"));
+                }
 
-      this.userService.getById(localStorage.getItem("currentUID"), localStorage.getItem("beJWT")).subscribe(
-          result => {
-            result;
-              if(result === 'Provider'){
-                localStorage.setItem('daan','/providers');
-                console.log("inside provider : ", localStorage.getItem("daan"));
-              }else if (result === 'Customer'){
-                localStorage.setItem('daan','/customers');
-                console.log("inside customer : ", localStorage.getItem("daan"));
-              }
+                  this.router.navigate([localStorage.getItem("daan")]);
+            }
 
-                this.router.navigate([localStorage.getItem("daan")]);
-          }
-
-        )
+          )
+      }
 
 
 
