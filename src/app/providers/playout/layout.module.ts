@@ -8,6 +8,7 @@ import { LayoutComponent } from './layout.component';
 import { HeaderComponent } from './header/header.component';//../../shared';
 import { SidebarComponent} from './sidebar/sidebar.component';
 import { InfoComponent } from '../info/info.component';
+import { InfoeditComponent } from '../info-edit/info-edit.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -19,7 +20,8 @@ import { InfoComponent } from '../info/info.component';
         LayoutComponent,
         HeaderComponent,
         SidebarComponent,
-        InfoComponent
+        InfoComponent,
+        InfoeditComponent
     ]
 })
 export class LayoutModule { }

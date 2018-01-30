@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout.component';
 import { InfoComponent } from '../info/info.component';
+import { InfoeditComponent } from '../info-edit/info-edit.component';
 
 const routes: Routes = [
     {
@@ -15,7 +16,8 @@ const routes: Routes = [
             { path: 'chat', loadChildren: '../chat/chat.module#PchatModule' },
             { path: 'ads', loadChildren: '../ads/ads.module#AdsModule' },
             { path: 'search', loadChildren: '../search/search.module#SearchModule' },
-            { path: 'info', component: InfoComponent}
+            { path: 'info', component: InfoComponent},
+            { path: 'info/:id', component: InfoeditComponent}
 
         ]
     }
