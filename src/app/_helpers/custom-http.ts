@@ -58,8 +58,10 @@ export class CustomHttp extends Http {
         if (error.status === 401) {
             // 401 unauthorized response so log user out of client
   //          window.location.href = '/users/login';
-              window.location.href = '/unauthorizedAccess';
+              window.location.href = '/error/unauthorized';
               console.log("**401 unauthorized response so log user out of client  custom-http.ts")
+        }else if(error.status === 404){
+          console.log("custom-https.ts err 404" + error)
         }
 
         return Observable.throw(error._body);

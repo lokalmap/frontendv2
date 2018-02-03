@@ -11,29 +11,46 @@ export class AuthenticationService {
     constructor(
       private http: Http,
       private router: Router,
-      private userService: UserService) { }
+      private usersrv: UserService) { }
 
     login(username1: string, password1: string) {
       const data: Loginuserobj = {
         username: username1,
         password: password1
       }
+      console.log("login invoke : ");
       const req =  this.http.post('/UsersDetails/login',data )
       .subscribe(
         res => {
           console.log("res status : " + res.status);
           if (res.status = 200)
           {
-            localStorage.setItem('currentUID', res.json().userId);
+            let cUID:string = res.json().userId;
+            localStorage.setItem('currentUID', cUID);   //for monitoring purposes only
             localStorage.setItem('beJWT', res.json().id);
             localStorage.setItem('isLoggedin', 'true');
-            this.router.navigate(['/ct']);
+            sessionStorage.setItem('currentUID',cUID);
+            console.log("get cUID:  " +cUID);
+            let rtr_flg:boolean = false;
+            this.usersrv.checkClientAccExists(cUID).subscribe(response => {
+                  rtr_flg = response.exists;
+              }, err => {
+                console.log("authentication.service.ts errors + : " + err)
+              });
+            if (rtr_flg) {
+                this.router.navigate(['/']);
+            }else
+            {
+              console.log('gsdfgsdf');
+              this.router.navigate(['/providers/info/'+ cUID]);
+             }
           }
         }, err => {
           console.log("error occured");
+          return '';
         }
       )
-
+      return '';
     }
     logout() {
         // remove user from local storage to log user out

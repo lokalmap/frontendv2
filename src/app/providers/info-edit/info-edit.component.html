@@ -1,81 +1,103 @@
-<div class="container" [@routerTransition]>
-  <h2>User Profile</h2>
-  <div class="container profile_container">
-    <div class="row profile_display">
-      <div class="col holder_profile">
-        <img class="user_profile" src="../../assets/img/profile.jpg" alt="edit your picture">
-        <br>
-        <p><a routerLink= "/providers/info">back</a></p>
+<div *ngIf="renderflg">
+  <div class="container" [@routerTransition]>
+    <h2>User Profile</h2>
+    <div class="container profile_container">
+      <div class="row profile_display">
+        <div class="col holder_profile">
+          <img class="user_profile" src="../../assets/img/profile.jpg" alt="edit your picture">
+          <br>
+          <a routerLink= "/providers/info">back</a>
+        </div>
       </div>
-      <input class="form-control" placeholder="Alias">
     </div>
-    <br>
+
+    <form name="form" (ngSubmit)="onFSubmit()" #f="ngForm" novalidate>
+      <input class="form-control" placeholder="Enter brief description"  name="description" [(ngModel)]="userinfo.description" >
+      <br>
+      <h4>User Information</h4>
+      <div class="form-content">
+        <div class="container table_container">
+          <table class="table table-sm data_holder">
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th>Member Date</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>First Name:</td>
+                <td><input class="form-control" placeholder="Enter Firstname" name="fname"  [(ngModel)]="userinfo.fname"></td>
+                <td>2012/01/21</td>
+                <td>
+                <span *ngIf="userinfo.status" class="badge badge-success">Active</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Middle Name:</td>
+                <td><input class="form-control" placeholder="Enter Middlename" name="mname" [(ngModel)]="userinfo.mname"></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Last Name:</td>
+                <td><input class="form-control" placeholder="Enter Lastname" name="lname" [(ngModel)]="userinfo.lname"></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Username:</td>
+                <td><input class="form-control" placeholder="Enter Username" name="username" [(ngModel)]="userinfo.username"></td>
+                <td></td>
+                <td></td>
+
+              </tr>
+              <tr>
+                <td>Email Address:</td>
+                <td><input class="form-control" placeholder="Enter Email" name="emailAddr" [(ngModel)]="userinfo.emailAddr"></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Contact Number:</td>
+                <td><input class="form-control" placeholder="Enter Contact Number" name="contactNum" [(ngModel)]="userinfo.contactNum"></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Recovery Email:</td>
+                <td><input class="form-control" placeholder="Enter Hostname" name="hostname" [(ngModel)]="userinfo.hostname"></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Status:</td>
+                <td>{{userinfo.status}}</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Role:</td>
+                <td>{{userinfo.role}}</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Subscription:</td>
+                <td>{{userinfo.subsc}}</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-12 text-right">
+        <button class="btn rounded-btn" routerLink= "/standard/info" type= "button">Cancel</button>
+        <button class="btn rounded-btn" type= "submit">Save</button>
+      </div>
+    </form>
   </div>
-  <h4>User Information</h4>
-  <form role="form">
-    <div class="container table_container">
-      <table class="table table-sm data_holder">
-        <thead>
-          <tr>
-            <th></th>
-            <th></th>
-            <th>Member Date</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>First Name:</td>
-            <td><input class="form-control" placeholder="Enter First Name"></td>
-            <td>2012/01/21</td>
-            <td>
-              <span class="badge badge-success">Active</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Last Name:</td>
-            <td><input class="form-control" placeholder="Enter Last Name"></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>User Name:</td>
-            <td>Lorem-ipsum.@gmail.com</td>
-            <td></td>
-            <td></td>
-
-          </tr>
-          <tr>
-            <td>Email Address:</td>
-            <td>Lorem-ipsum.@gmail.com</td>
-            <td></td>
-            <td></td>
-
-          </tr>
-          <tr>
-            <td>Contact Number:</td>
-            <td><input class="form-control" placeholder="Enter Contact Number Ex. +63 XXX XXX XXXX"></td>
-            <td></td>
-            <td></td>
-
-          </tr>
-          <tr>
-            <td>Password Recovery Email:</td>
-            <td><input class="form-control" placeholder="Enter Recovery Email Ex. john.delacruz@domain.com"></td>
-            <td></td>
-            <td></td>
-
-          </tr>
-          <tr>
-            <td>Account Type:</td>
-            <td>Customer</td>
-            <td></td>
-            <td></td>
-
-
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </form>
 </div>
