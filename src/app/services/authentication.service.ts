@@ -31,19 +31,16 @@ export class AuthenticationService {
             localStorage.setItem('isLoggedin', 'true');
             sessionStorage.setItem('currentUID',cUID);
             console.log("get cUID:  " +cUID);
-            let rtr_flg:boolean = false;
             this.usersrv.checkClientAccExists(cUID).subscribe(response => {
-                  rtr_flg = response.exists;
+                  if (response.exists) {
+                      this.router.navigate(['/providers']);
+                  }else
+                  {
+                    this.router.navigate(['/providers/info/'+ cUID]);
+                  }
               }, err => {
                 console.log("authentication.service.ts errors + : " + err)
               });
-            if (rtr_flg) {
-                this.router.navigate(['/']);
-            }else
-            {
-              console.log('gsdfgsdf');
-              this.router.navigate(['/providers/info/'+ cUID]);
-             }
           }
         }, err => {
           console.log("error occured");

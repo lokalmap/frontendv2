@@ -8,7 +8,8 @@ import { UserInfo, Loginuserobj } from '../_models';
 export class UserService {
     constructor(private http: Http) {     console.log('Data service connected...')}
     private headers_var = new Headers({
-      'Content-Type' : 'application/json'
+      'Content-Type' : 'application/json',
+      'Authorization': localStorage.getItem("beJWT")
     });
 
 
@@ -49,6 +50,11 @@ export class UserService {
     checkClientAccExists(_id: string):Observable<any>{
         console.log("trace : " + _id);
         return this.http.get('/ClientAccs/' + _id + '/exists',{headers:this.headers_var}).map((response: Response) => response.json() as any).catch(err =>{
+          return Observable.throw(err);
+        });
+    }
+    getUserUsername(_id: string) {
+        return this.http.get('/UsersDetails/' +_id,{headers:this.headers_var}).map((response: Response) => response.json() as JSON).catch(err =>{
           return Observable.throw(err);
         });
     }

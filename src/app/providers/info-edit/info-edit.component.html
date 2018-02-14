@@ -6,7 +6,7 @@
         <div class="col holder_profile">
           <img class="user_profile" src="../../assets/img/profile.jpg" alt="edit your picture">
           <br>
-          <a routerLink= "/providers/info">back</a>
+            <a routerLink= "/providers/info" *ngIf="returl_flg">back</a>
         </div>
       </div>
     </div>
@@ -49,14 +49,14 @@
               </tr>
               <tr>
                 <td>Username:</td>
-                <td><input class="form-control" placeholder="Enter Username" name="username" [(ngModel)]="userinfo.username"></td>
+                <td>{{userinfo.username}}</td>
                 <td></td>
                 <td></td>
 
               </tr>
               <tr>
                 <td>Email Address:</td>
-                <td><input class="form-control" placeholder="Enter Email" name="emailAddr" [(ngModel)]="userinfo.emailAddr"></td>
+                <td>{{userinfo.emailAddr}}</td>
                 <td></td>
                 <td></td>
               </tr>
@@ -95,7 +95,7 @@
         </div>
       </div>
       <div class="col-12 text-right">
-        <button class="btn rounded-btn" routerLink= "/standard/info" type= "button">Cancel</button>
+        <button class="btn rounded-btn" routerLink= "/standard/info" type= "button" *ngIf="returl_flg">Cancel</button>
         <button class="btn rounded-btn" type= "submit">Save</button>
       </div>
     </form>
