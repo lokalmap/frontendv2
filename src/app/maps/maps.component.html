@@ -1,14 +1,47 @@
 <app-header></app-header>
 
-<div class="card-block">
-
-      <input  class="form-control" class="row" type="text" placeholder="Search Box">
-      <agm-map style= "height: 1000px" [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-        <agm-marker [latitude]="lat" [longitude]="lng">
-          <agm-info-window>
-            <h3><strong>Howdy!</strong></h3>
-            <p>You are here!</p>
-          </agm-info-window>
-        </agm-marker>
-      </agm-map>
- </div>
+<div class="jumbotron">
+  <div class="container">
+    <span>
+      <h2 class="display-5 font-italic text-center">Search anything nearby!</h2>
+    </span>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-3" type="text" placeholder="{{ 'Search' | translate }}">
+    </form>
+    <agm-map style="height: 500px" [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+      <agm-marker [latitude]="lat" [longitude]="lng">
+        <agm-info-window>
+          <h3>
+            <strong>Howdy!</strong>
+          </h3>
+          <p>You are here!</p>
+        </agm-info-window>
+      </agm-marker>
+    </agm-map>
+  </div>
+</div>
+<div class="container">
+  <!-- Example row of columns -->
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Shop</h2>
+      <p>Looking for anything that is near you? Search using our optimized search tool.</p>
+      <p>
+        <a class="btn btn-secondary" href="#" role="button">View details »</a>
+      </p>
+    </div>
+    <div class="col-md-6">
+      <h2>Sell</h2>
+      <p>Anything to sell? Post it here for free!</p>
+      <p>
+        <a class="btn btn-secondary" href="#" role="button">View details »</a>
+      </p>
+    </div>
+  </div>
+  <hr>
+</div>
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">© 2017 LokalMap.com</span>
+  </div>
+</footer>
