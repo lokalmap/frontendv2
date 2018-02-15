@@ -1,9 +1,14 @@
 <app-header></app-header>
-<agm-map style= "height: 1000px" [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-  <agm-marker [latitude]="lat" [longitude]="lng">
-    <agm-info-window>
-      <h3><strong>Howdy!</strong></h3>
-      <p>You are here!</p>
-    </agm-info-window>
-  </agm-marker>
-</agm-map>
+
+<div class="card-block">
+
+      <input  class="form-control" class="row" type="text" placeholder="Search Box">
+      <agm-map style= "height: 1000px" [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+        <agm-marker [latitude]="lat" [longitude]="lng">
+          <agm-info-window>
+            <h3><strong>Howdy!</strong></h3>
+            <p>You are here!</p>
+          </agm-info-window>
+        </agm-marker>
+      </agm-map>
+ </div>
