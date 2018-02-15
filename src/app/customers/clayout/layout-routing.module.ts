@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout.component';
 import { InfoComponent } from '../info/info.component';
+import { InfoeditComponent } from '../info-edit/info-edit.component';
 
 const routes: Routes = [
     {
@@ -13,6 +14,7 @@ const routes: Routes = [
             { path: 'chat', loadChildren: '../cchat/cchat.module#CchatModule' },
             { path: 'track', loadChildren: '../../shared/components/track/track.module#TrackModule' },
             { path: 'info', component: InfoComponent},
+            { path: 'info/:id', component: InfoeditComponent},
             { path: 'dashboard', loadChildren: '../../layout/dashboard/dashboard.module#DashboardModule' },
             { path: 'charts', loadChildren: '../../layout/charts/charts.module#ChartsModule' },
             { path: 'tables', loadChildren: '../../layout/tables/tables.module#TablesModule' },
