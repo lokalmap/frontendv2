@@ -7,10 +7,13 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthGuard } from './shared';
+import { AuthGuard, AuthGuard_CheckAccTypes } from './shared';
 import { AlertService, AuthenticationService, UserService } from './services/index';
 import { customHttpProvider } from './_helpers/index';
 import { AlertComponent } from './_directives/index';
+import { InfoComponent } from './shared/components/info/info.component';
+import { InfoeditComponent } from './shared/components/info-edit/info-edit.component';
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
     // for development
@@ -20,7 +23,9 @@ export function HttpLoaderFactory(http: Http) {
 @NgModule({
     declarations: [
         AppComponent,
-        AlertComponent
+        AlertComponent,
+        InfoComponent,
+        InfoeditComponent
     ],
     imports: [
         BrowserModule,
@@ -39,6 +44,7 @@ export function HttpLoaderFactory(http: Http) {
     ],
     providers: [
       AuthGuard,
+      AuthGuard_CheckAccTypes,
       UserService,
       AlertService,
       AuthenticationService,

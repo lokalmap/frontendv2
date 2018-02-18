@@ -7,8 +7,6 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { HeaderComponent } from './header/header.component';//../../shared';
 import { SidebarComponent} from './sidebar/sidebar.component';
-import { InfoComponent } from '../info/info.component';
-import { InfoeditComponent } from '../info-edit/info-edit.component';
 
 @NgModule({
     imports: [
@@ -20,9 +18,7 @@ import { InfoeditComponent } from '../info-edit/info-edit.component';
     declarations: [
         LayoutComponent,
         HeaderComponent,
-        SidebarComponent,
-        InfoComponent,
-        InfoeditComponent
+        SidebarComponent
     ]
 })
 export class LayoutModule { }

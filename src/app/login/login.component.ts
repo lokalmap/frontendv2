@@ -21,51 +21,15 @@ export class LoginComponent implements OnInit {
       private router: Router,
       private authenticationService: AuthenticationService,
       private alertService: AlertService,
-      private userService: UserService,) { }
+      private usersrv: UserService) { }
 
       ngOnInit() {
           // reset login status
           this.authenticationService.logout();
-
           // get return url from route parameters or default to '/'
           this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
       }
       login() {
-         this.authenticationService.login(this.model.username, this.model.password);
+        this.authenticationService.login(this.model.username, this.model.password);
       }
-          /*
-          .subscribe(
-              data => {
-                localStorage.setItem('isLoggedin', 'true');
-                  this.router.navigate([this.returnUrl]);
-              },
-              error => {
-                  this.alertService.error(error);
-                  this.loading = false;
-              });
-          this.loading = true;
-          console.log("this.model.password " + this.model.password);
-          this.userService.userloginreq(this.model)
-              .subscribe(
-                  data => {
-                    localStorage.setItem('isLoggedin', 'true');
-                      this.alertService.success('Login successful', true);
-                      console.log('alert : : ' + data);
-                      this.router.navigate(['/customers']);
-                  },
-                  error => {
-                      this.alertService.error(error);
-                      this.loading = false;
-                  });
-
-          this.authenticationService.login(this.model.username, this.model.password)
-              .subscribe(
-                  data => {
-                      this.router.navigate([thi s.returnUrl]);
-                  },
-                  error => {
-                      this.alertService.error(error);
-                      this.loading = false;
-                  });
-                  */
 }

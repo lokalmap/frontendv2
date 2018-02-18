@@ -48,15 +48,26 @@ export class UserService {
     }
     */
     checkClientAccExists(_id: string):Observable<any>{
-        console.log("trace : " + _id);
+        console.log("user.service.ts trace : " + _id);
         return this.http.get('/ClientAccs/' + _id + '/exists',{headers:this.headers_var}).map((response: Response) => response.json() as any).catch(err =>{
           return Observable.throw(err);
         });
     }
-    getUserUsername(_id: string) {
-        return this.http.get('/UsersDetails/' +_id,{headers:this.headers_var}).map((response: Response) => response.json() as JSON).catch(err =>{
-          return Observable.throw(err);
-        });
+    getUserByID(_id: string,_tokenvar?:string) {
+        if (_tokenvar === undefined){
+          console.log("Ohyeah");
+          return this.http.get('/UsersDetails/' +_id,{headers:this.headers_var}).map((response: Response) => response.json() as JSON).catch(err =>{
+            return Observable.throw(err);
+          });
+        }else{
+          let headers_varx = new Headers({
+            'Content-Type' : 'application/json',
+            'Authorization': _tokenvar
+          });
+          return this.http.get('/UsersDetails/' +_id,{headers:headers_varx}).map((response: Response) => response.json() as JSON).catch(err =>{
+            return Observable.throw(err);
+          });
+        }
     }
     create(user: UserInfo) {
         return this.http.post('/UsersDetails', user);

@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
-import { Router } from '@angular/router';
-
+import { Router, RouterStateSnapshot, ActivatedRouteSnapshot} from '@angular/router';
 @Injectable()
 export class AuthGuard implements CanActivate {
+    constructor() { }
 
-    constructor(private router: Router) { }
-
-    canActivate() {
-        return true;
+    canActivate():boolean {
         /*
         if (localStorage.getItem('isLoggedin')) {
             return true;
@@ -17,5 +14,24 @@ export class AuthGuard implements CanActivate {
         this.router.navigate(['/login']);
         return false;
         */
+        return true;
+    }
+}
+@Injectable()
+export class AuthGuard_CheckAccTypes implements CanActivate {
+    constructor(private router:Router) { }
+    canActivate(actRoute: ActivatedRouteSnapshot,state: RouterStateSnapshot):boolean {
+      sessionStorage.setItem('stateroutes',state.url)
+      let temp: string = localStorage.getItem('allowedRoutes') ;
+      console.log("1 : " + temp);
+      console.log("2 : " + actRoute.url[0].path);
+
+      if (temp == actRoute.url[0].path){
+          console.log("+++ T");
+          return true
+      }
+      console.log("+++ F");
+      this.router.navigate(['/']);
+      return false;
     }
 }

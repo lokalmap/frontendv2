@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { routerTransition } from '../../router.animations';
-import { UserService } from '../../services/index';
-import { UserInfo } from '../../_models';
+import { routerTransition } from '../../../router.animations';
+import { UserService } from '../../../services/index';
+import { UserInfo } from '../../../_models';
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { routerTransition } from '../../router.animations';
+import { routerTransition } from '../../../router.animations';
 import { Router, ActivatedRoute, Params, UrlSegment  } from '@angular/router';
-import { UserService } from '../../services/index';
-import { UserInfo } from '../../_models';
+import { UserService } from '../../../services/index';
+import { UserInfo } from '../../../_models';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 @Component({
@@ -37,14 +37,14 @@ export class InfoeditComponent implements OnInit {
         let CUID:string = sessionStorage.getItem('currentUID');
         this.userinfo.status = 'Pending';
         this.userinfo._id = CUID;
-        this.usersrv.getUserUsername(CUID).subscribe(response => {
+        this.usersrv.getUserByID(CUID).subscribe(response => {
           console.log("HERE  !!! " + response);
             this.userinfo.username =  response.username;
             this.userinfo.emailAddr =  response.email;
             this.returl_flg = false;
             this.renderflg = true;
           }, err => {
-            console.log("error getUserUsername(CUID): " + err);
+            console.log("error getUserByID(CUID): " + err);
           });
       });
       this.idstring = this.userinfo._id;
