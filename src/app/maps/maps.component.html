@@ -6,7 +6,7 @@
       <h2 class="display-5 font-italic text-center">Search anything nearby!</h2>
     </span>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-3" type="text" placeholder="{{ 'Search' | translate }}">
+      <input class="form-control" #search formControl="searchControl" type="search" placeholder="Search">
     </form>
     <agm-map style="height: 500px" [latitude]="lat" [longitude]="lng" [zoom]="zoom">
       <agm-marker [latitude]="lat" [longitude]="lng">
@@ -34,14 +34,32 @@
       <h2>Sell</h2>
       <p>Anything to sell? Post it here for free!</p>
       <p>
-        <a class="btn btn-secondary" href="#" role="button">View details »</a>
+        <a class="btn btn-secondary" data-toggle="collapse" aria-expanded="false"  role="button">View details »</a>
       </p>
     </div>
   </div>
   <hr>
 </div>
-<footer class="footer">
-  <div class="container">
+
+<footer class="footer container-fluid mainFooterBgColor">
+  <hr class="style8">
+  <div class="container footer-style">
+    <div class="row">
+      <div class="col">
+        <h3>Home</h3>
+        <h4>About</h4>
+        <h4>Press & Partnership</h4>
+        <h4>Blog</h4>
+        <h4>Help</h4>
+      </div>
+      <div class="col">
+        <h3>Contact Us</h3>
+        <h4>Career</h4>
+        <h4>Apply as a Shopper/Delivery Bee</h4>
+        <h4>Groceries how-to</h4>
+      </div>
+
+    </div>
     <span class="text-muted">© 2017 LokalMap.com</span>
   </div>
 </footer>
