@@ -6,7 +6,7 @@ import { UserInfo } from '../../../_models';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 @Component({
-  selector: 'app-info',
+  selector: 'app-info-edit',
   templateUrl: './info-edit.component.html',
   styleUrls: ['./info-edit.component.scss'],
   animations: [routerTransition()]
@@ -76,7 +76,7 @@ export class InfoeditComponent implements OnInit {
         console.log("test id : " + segments[segments.length-1]);
         this.usersrv.putById(segments[segments.length-1].toString(),this.userinfo).subscribe(response => {
             this.userinfo =  response as UserInfo;
-            this.router.navigate(['/providers/info']);
+            this.router.navigate(['/info']);
           }, err => {
             console.log("error +++++++++++: " + err);
           });

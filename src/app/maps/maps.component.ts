@@ -5,7 +5,8 @@ import { MapsAPILoader } from '@agm/core';
 import { FormControl } from '@angular/forms';
 
 import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
+//import { UserService } from '../services/user.service';
+import { MapService } from '../services/map.service';
 
 @Component({
   selector: 'app-maps',
@@ -19,7 +20,7 @@ export class MapsComponent implements OnInit {
   zoom: number;
   @ViewChild("search")
   public searchElementRef: ElementRef;
-  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {
+  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone,private mapsrv: MapService) {
   }
   //
   private setCurrentPosition() {
@@ -33,6 +34,7 @@ export class MapsComponent implements OnInit {
     }
   }
   ngOnInit() {
+    this.getproviders();
     this.searchControl = new FormControl();
     this.setCurrentPosition(); //set current position
     //load Places Autocomplete
@@ -54,5 +56,11 @@ export class MapsComponent implements OnInit {
         });
       });
     });
-}
+  }
+  getproviders(){
+    this.mapsrv.getAll().subscribe(response =>{
+      console.log("Results:",response);
+    });
+
+  }
 }

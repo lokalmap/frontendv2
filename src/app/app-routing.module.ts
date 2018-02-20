@@ -5,7 +5,7 @@ import { InfoComponent } from './shared/components/info/info.component';
 import { InfoeditComponent } from './shared/components/info-edit/info-edit.component';
 
 const routes: Routes = [
-    { path: '', loadChildren: './maps/maps.module#MapsModule', canActivate: [AuthGuard] },
+    { path: '', loadChildren: './maps/maps.module#MapsModule' },
     { path: 'customers', loadChildren: './customers/clayout/layout.module#LayoutModule', canActivate: [AuthGuard_CheckAccTypes] },
     { path: 'providers', loadChildren: './providers/playout/layout.module#LayoutModule', canActivate: [AuthGuard_CheckAccTypes] },
     { path: 'info', component: InfoComponent, canActivate: [AuthGuard]},
