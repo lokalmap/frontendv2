@@ -5,6 +5,64 @@
     <button type="button" class="btn btn-outline-danger btn-sm" (click)="openModal(tmptmodaldanger)">DELETE</button>
   </div>
 </div>
+<div>
+  <div class="card mb-3">
+      <div class="card-header">List of Inventory</div>
+      <div class="card-block table-responsive">
+          <table class="table table-hover table-bordered">
+              <thead>
+              <tr>
+                  <th>#</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Username</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+              </tr>
+              <tr>
+                  <th scope="row">2</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@TwBootstrap</td>
+              </tr>
+              <tr>
+                  <th scope="row">3</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+              </tr>
+              <tr>
+                  <th scope="row">4</th>
+                  <td colspan="2">Larry the Bird</td>
+                  <td>@twitter</td>
+              </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active"> <span class="page-link">
+        2
+        <span class="sr-only">(current)</span>
+      </span></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
 <ng-template #tmptmodalsuccess>
   <div class="modal-success" role="document">
     <div class="modal-header">
@@ -18,27 +76,38 @@
   </div> <!--modal-success -->
     <div class="form-group">
       <div class="animated fadeIn">
-        <div class="card email-app">
-          <main>
             <div class="form-group">
               <label for="company">Name</label>
               <input type="text" class="form-control" id="inptName" placeholder="Enter name">
-            </div>
-            <div class="form-group">
-              <label for="company">Price</label>
-              <input type="text" class="form-control" id="inptPrice" placeholder="Enter price">
-            </div>
-            <div class="form-group">
-              <label for="company">Category</label>
-              <input type="text" class="form-control" id="inptCat" placeholder="Enter category">
-            </div>
-            <div class="form-group">
-              <label for="company">Quantity</label>
-              <input type="text" class="form-control" id="inptQuant" placeholder="Enter quantity">
-            </div>
-          </main>
+              <div class="form-group" *ngIf="(modaladdctr==1)">
+                <label for="company">Price</label>
+                <input type="text" class="form-control" id="inptPrice" placeholder="Enter price">
 
-        </div> <!--card email-app -->
+                <label for="company">Category</label>
+                <input type="text" class="form-control" id="inptCat" placeholder="Enter category">
+
+                <label for="company">Quantity</label>
+                <input type="text" class="form-control" id="inptQuant" placeholder="Enter quantity">
+                <label for="company">Description</label>
+                <input type="text" class="form-control" id="a1" placeholder="Enter quantity">
+              </div>
+              <div class="form-group" *ngIf="(modaladdctr==2)">
+                <label for="company">Tags</label>
+                <input type="text" class="form-control" id="inptPrice" placeholder="Enter price">
+
+                <label for="company">Alias</label>
+                <input type="text" class="form-control" id="inptCat" placeholder="Enter category">
+
+                <label for="company">Date</label>
+                <input type="text" class="form-control" id="inptQuant" placeholder="Enter quantity">
+              </div>
+              <div class="form-group">
+                <button class="btn rounded-btn" type= "button" (click)="backfn()">Back</button>
+                <button class="btn rounded-btn" type= "submit" (click)="onSubmitFN()">Submit</button>
+                <button class="btn rounded-btn" type= "button" (click)="nextfn()">Next</button>
+              </div>
+            </div>
+
       </div>
     </div>
 </ng-template>

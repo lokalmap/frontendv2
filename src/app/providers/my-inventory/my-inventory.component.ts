@@ -11,6 +11,7 @@ import { routerTransition } from '../../router.animations';
 })
 export class MyInventoryComponent implements OnInit {
   public modalRef:BsModalRef;
+  modaladdctr:number=0;
   constructor(private modalService: BsModalService) { }
   public openModal(template: TemplateRef<any>) {
     console.log("++++++++++++");
@@ -18,5 +19,19 @@ export class MyInventoryComponent implements OnInit {
   }
   ngOnInit() {
   }
-
+  callthisf(){
+    console.log("test1");
+  }
+  backfn(){
+    this.modaladdctr--;
+    console.log("-- : " + this.modaladdctr);
+  }
+  nextfn(){
+    this.modaladdctr++;
+    console.log("++ : " + this.modaladdctr);
+  }
+  onSubmitFN(){
+    this.modaladdctr = 0;
+    console.log("test2");
+  }
 }
