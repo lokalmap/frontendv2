@@ -4,8 +4,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" routerLink="/customers/dashboard" [routerLinkActive]="['router-link-active']">LokalMap</a>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="{{ 'Search' | translate }}" >
+        <form class="form-inline my-2 my-lg-0" (ngSubmit)="onSubmitFN(inptvar.value)">
+            <input class="form-control mr-sm-2" type="text" placeholder="{{ 'Search' | translate }}" #inptvar>
         </form>
         <!--
         <form class="form-inline my-2 my-lg-0">

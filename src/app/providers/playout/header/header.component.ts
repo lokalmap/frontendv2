@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { Gvar } from '../../../var';
 
 @Component({
     selector: 'app-header',
@@ -10,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class HeaderComponent implements OnInit {
 
     pushRightClass: string = 'push-right';
-    
+
 
     constructor(private translate: TranslateService, public router: Router) {
         this.router.events.subscribe((val) => {
@@ -43,5 +44,9 @@ export class HeaderComponent implements OnInit {
 
     changeLang(language: string) {
         this.translate.use(language);
+    }
+    onSubmitFN(stextv?:string){
+      Gvar.v1 = stextv;
+      console.log("ssss " + stextv);
     }
 }
