@@ -46,6 +46,6 @@ export class HeaderComponent implements OnInit {
     }
     onSubmitFN(stextv?:string){
       Gvar.v1 = stextv;
-      console.log("ssss " + stextv);
+      console.log("test value " + stextv);
     }
 }
