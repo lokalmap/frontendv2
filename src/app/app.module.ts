@@ -8,7 +8,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard, AuthGuard_CheckAccTypes } from './shared';
-import { AlertService, AuthenticationService, UserService, MapService } from './services/index';
+import { AlertService, AuthenticationService, UserService, MapService, CommonService} from './services/index';
 import { customHttpProvider } from './_helpers/index';
 import { AlertComponent } from './_directives/index';
 import { InfoComponent } from './shared/components/info/info.component';
@@ -48,6 +48,7 @@ export function HttpLoaderFactory(http: Http) {
       UserService,
       AlertService,
       MapService,
+      CommonService,
       AuthenticationService,
       customHttpProvider
     ],
