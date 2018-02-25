@@ -27,7 +27,12 @@ export class CommonService {
         return Observable.throw(err);
       });
     }
-
+    postClientAccbyIDCustom(clientidvar:string,dburlvar:string,dbvar:ProductDB): Observable<any>{
+      console.log("pvar : ",dbvar);
+      return this.http.post('/ClientAccs'+ '/' + clientidvar + '/' + dburlvar, dbvar,{headers:this.headers_var}).map((response: Response) => response.json() as any).catch(err =>{
+        return Observable.throw(err);
+      });
+    }
     createClient( mapdb: ProductDB): Observable<ProductDB>{
       console.log(mapdb);
       return this.http.post('/testmodel', mapdb,{headers:this.headers_var}).map((response: Response) => response.json() as ProductDB).catch(err =>{

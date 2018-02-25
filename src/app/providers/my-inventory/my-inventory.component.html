@@ -76,38 +76,64 @@
   </div> <!--modal-success -->
     <div class="form-group">
       <div class="animated fadeIn">
+        <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmitFN(f)"  novalidate>
             <div class="form-group">
+              <div class="row">
+                <div class="col-xl-4 text-xs-center">
+                  General Type:
+                </div>
+                <div class="col-xl-4 text-xs-center">
+                  <input type="radio" value="Product" name="gentype" ngModel #gentype="ngModel"> Product<br>
+                </div>
+                <div class="col-xl-4 text-xs-center">
+                  <input type="radio" value="Service" name="gentype" ngModel #gentype="ngModel"> Service<br>
+                </div>
+              </div>
               <label for="company">Name</label>
-              <input type="text" class="form-control" id="inptName" placeholder="Enter name">
+              <input type="text" class="form-control" placeholder="Enter name" name="namestr" ngModel required #namestr="ngModel">
               <div class="form-group" *ngIf="(modaladdctr==1)">
-                <label for="company">Price</label>
-                <input type="text" class="form-control" id="inptPrice" placeholder="Enter price">
+                <label>Price</label>
+                <input type="number" class="form-control" placeholder="Enter price" name="price" ngModel required #price="ngModel">
 
-                <label for="company">Category</label>
-                <input type="text" class="form-control" id="inptCat" placeholder="Enter category">
+                <label>Category</label>
+                <input type="text" class="form-control" placeholder="Enter category" name="cat" ngModel required #cat="ngModel">
 
-                <label for="company">Quantity</label>
-                <input type="text" class="form-control" id="inptQuant" placeholder="Enter quantity">
-                <label for="company">Description</label>
-                <input type="text" class="form-control" id="a1" placeholder="Enter quantity">
+                <label>Quantity</label>
+                <input type="number" class="form-control" placeholder="Enter quantity" name="qty" ngModel required #qty="ngModel">
+                <label>Model / Unit Type</label>
+                <input type="text" class="form-control" placeholder="Enter model or unit type" name="utype" ngModel required #utype="ngModel">
+                <label>Description</label>
+                <input type="text" class="form-control" placeholder="Enter Description" name="desc" ngModel required #desc="ngModel">
               </div>
               <div class="form-group" *ngIf="(modaladdctr==2)">
-                <label for="company">Tags</label>
-                <input type="text" class="form-control" id="inptPrice" placeholder="Enter price">
-
-                <label for="company">Alias</label>
-                <input type="text" class="form-control" id="inptCat" placeholder="Enter category">
-
-                <label for="company">Date</label>
-                <input type="text" class="form-control" id="inptQuant" placeholder="Enter quantity">
+                <label>Caption</label>
+                <input type="text" class="form-control" placeholder="Enter Caption" name="caption" ngModel required #caption="ngModel">
+                <label>Tags</label>
+                <input type="search" class="form-control" placeholder="Enter Tags" name="tags" ngModel required #tags="ngModel">
+                <label>Brand</label>
+                <input type="text" class="form-control" placeholder="Enter Brand" name="brand" ngModel required #brand="ngModel">
+                <label>Variant / Color</label>
+                <input type="text" class="form-control" placeholder="Enter Variant" name="variant" ngModel required #variant="ngModel">
+                <label>Serial Number</label>
+                <input type="text" class="form-control" placeholder="Serial Number" name="sn_num" ngModel required #sn_num="ngModel">
+              </div>
+              <div class="form-group" *ngIf="(modaladdctr==3)">
+                <label>Features</label>
+                <input type="text" class="form-control" placeholder="Enter Features" name="features" ngModel required #features="ngModel">
+                <label>Alias</label>
+                <input type="text" class="form-control" placeholder="Enter Alias / AKA" name="alias" ngModel required #alias="ngModel">
+                <label>End date validity</label>
+                <input type="Date" class="form-control" placeholder="Enter Quantity" name="evdte" ngModel required #evdte="ngModel">
+                <label>Custom search tags</label>
+                <input type="search" class="form-control" placeholder="Enter Custom Tags" name="searchTags" ngModel required #searchTags="ngModel">
               </div>
               <div class="form-group">
                 <button class="btn rounded-btn" type= "button" (click)="backfn()">Back</button>
-                <button class="btn rounded-btn" type= "submit" (click)="onSubmitFN()">Submit</button>
+                <button class="btn rounded-btn" type= "submit">Submit</button>
                 <button class="btn rounded-btn" type= "button" (click)="nextfn()">Next</button>
               </div>
             </div>
-
+        </form>
       </div>
     </div>
 </ng-template>
