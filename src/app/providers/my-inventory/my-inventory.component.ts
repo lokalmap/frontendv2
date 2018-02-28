@@ -16,6 +16,16 @@ export class MyInventoryComponent implements OnInit {
   tempschem:any;
   pdbvar:ProductDB = new ProductDB;
   sdbvar:ServiceDB = new ServiceDB;
+  grpvars:any[] =  [
+    {
+      id:'1',
+      c:["2a","3a","4a","5a","6a","7a","8a","9a","10a","11a","12a","13a"]
+    },
+    {
+      id:'2',
+      c:["2b","3b","4b","5b","6b","7b","8b","9b","10b","11b","12b","13b"]
+    }
+  ];
   constructor(private modalService: BsModalService,
   private commonSrv: CommonService) { }
   public openModal(template: TemplateRef<any>) {
