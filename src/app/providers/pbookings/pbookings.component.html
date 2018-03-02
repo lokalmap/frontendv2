@@ -1,167 +1,14 @@
 <div class="d-flex align-content-around flex-wrap" [@routerTransition]>
-  <div class="d-flex p-2 bd-highlight">
 
-      <div class="col-sm-4">
-          <div class="card mb-3">
-              <div class="card-header card-default">
-                  Card title
-              </div>
-              <div class="card-block">
-                  Card content
-              </div>
-          </div>
-          <div class="card card-primary card-inverse mb-3">
-              <div class="card-header card-primary">
-                  Card title
-              </div>
-              <div class="card-block bg-white">
-                  Card content
-              </div>
-          </div>
-      </div>
-      <!-- /.col-sm-4 -->
-      <div class="col-sm-4">
-          <div class="card card-success card-inverse mb-3">
-              <div class="card-header card-success">
-                  Card title
-              </div>
-              <div class="card-block bg-white">
-                  Card content
-              </div>
-          </div>
-          <div class="card card-info card-inverse">
-              <div class="card-header card-info">
-                  Card title
-              </div>
-              <div class="card-block bg-white">
-                  Card content
-              </div>
-          </div>
-      </div>
-      <!-- /.col-sm-4 -->
-      <div class="col-sm-4">
-          <div class="card card-warning card-inverse mb-3">
-              <div class="card-header card-warning">
-                  Card title
-              </div>
-              <div class="card-block bg-white">
-                  Card content
-              </div>
-          </div>
-          <div class="card card-danger card-inverse">
-              <div class="card-header card-danger">
-                  Card title
-              </div>
-              <div class="card-block bg-white">
-                  Card content
-              </div>
-          </div>
-      </div>
-      <!-- /.col-sm-4 -->
-      <div class="col-sm-4">
-          <div class="card card-success card-inverse mb-3">
-              <div class="card-header card-success">
-                  Card title
-              </div>
-              <div class="card-block bg-white">
-                  Card content
-              </div>
-          </div>
-      </div>
-      <!-- /.col-sm-4 -->
-      <div class="col-sm-4">
-          <div class="card card-warning card-inverse mb-3">
-              <div class="card-header card-warning">
-                  Card title
-              </div>
-              <div class="card-block bg-white">
-                  Card content
-              </div>
-          </div>
-      </div>
-      <!-- /.col-sm-4 -->
-      <div class="col-sm-4">
-          <div class="card card-danger card-inverse mb-3">
-              <div class="card-header card-danger">
-                  Card title
-              </div>
-              <div class="card-block bg-white">
-                  Card content
-              </div>
-          </div>
-      </div><!-- /.col-sm-4 -->
-  </div><!-- d-flex p-2 bd-highlight container -->
   <!-- bottom group -->
   <div class="d-flex p-2 bd-highlight">
-    <div class="row" >
-      <div class="col-sm-4">
-          <div class="card mb-3">
-              <div class="card-header card-default">
-                  Card title
-              </div>
-              <div class="card-block">
-                  Card content
-              </div>
-          </div>
-          <div class="card card-primary card-inverse mb-3">
-              <div class="card-header card-primary">
-                  Card title
-              </div>
-              <div class="card-block bg-white">
-                  Card content
-              </div>
-          </div>
-      </div>
-      <!-- /.col-sm-4 -->
-      <div class="col-sm-4">
-          <div class="card card-success card-inverse mb-3">
-              <div class="card-header card-success">
-                  Card title
-              </div>
-              <div class="card-block bg-white">
-                  Card content
-              </div>
-          </div>
-          <div class="card card-info card-inverse">
-              <div class="card-header card-info">
-                  Card title
-              </div>
-              <div class="card-block bg-white">
-                  Card content
-              </div>
-          </div>
-      </div>
-      <!-- /.col-sm-4 -->
-      <div class="col-sm-4">
-          <div class="card card-warning card-inverse mb-3">
-              <div class="card-header card-warning">
-                  Card title
-              </div>
-              <div class="card-block bg-white">
-                  Card content
-              </div>
-          </div>
-          <div class="card card-danger card-inverse">
-              <div class="card-header card-danger">
-                  Card title
-              </div>
-              <div class="card-block bg-white">
-                  Card content
-              </div>
-          </div>
-      </div>
-      <!-- /.col-sm-4 -->
-      <div class="col-sm-4">
-          <div class="card card-success card-inverse mb-3">
-              <div class="card-header card-success">
-                  Card title
-              </div>
-              <div class="card-block bg-white">
-                  Card content
-              </div>
-          </div>
-      </div>
-      <!-- /.col-sm-4 -->
+
+    <div class="row" card-group>
+      <ng-container *ngFor="let ctxvar of ctxvars">
+        <ng-container
+         *ngTemplateOutlet="tmpltBkC;context:ctxvar">
+        </ng-container>
+      </ng-container>
       <div class="col-sm-4">
           <div class="card card-warning card-inverse mb-3">
               <div class="card-header card-warning">
@@ -172,18 +19,18 @@
               </div>
           </div>
       </div>
-      <!-- /.col-sm-4 -->
-      <div class="col-sm-4">
-          <div class="card card-danger card-inverse mb-3">
-              <div class="card-header card-danger">
-                  Card title
-              </div>
-              <div class="card-block bg-white">
-                  Card content
-              </div>
-          </div>
-      </div><!-- /.col-sm-4 -->
     </div><!-- row -->
   </div><!-- d-flex p-2 bd-highlight container -->
-
 </div>
+<ng-template #tmpltBkC let-ctvar="cardTitl" let-ccvar="cardContent" let-clvar1="classv1" let-clvar2="classv2" let-clvar3="classv3">
+    <div class="col-sm-4">
+        <div  [ngClass]="clvar1">
+            <div [ngClass]="clvar2">
+                {{ctvar}}
+            </div>
+            <div [ngClass]="clvar3">
+                {{ccvar}}
+            </div>
+        </div>
+    </div><!-- /.col-sm-4 -->
+</ng-template>
