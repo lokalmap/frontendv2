@@ -7,6 +7,7 @@ export class AuthGuard implements CanActivate {
 
     canActivate():boolean {
         if (localStorage.getItem('isLoggedin')) {
+            console.log("nat");
             return true;
         }
         this.router.navigate(['/login']);
@@ -27,7 +28,7 @@ export class AuthGuard_CheckAccTypes implements CanActivate {
           return true
       }
       console.log("+++ F");
-      this.router.navigate(['/']);
+      this.router.navigate(['/'+temp]);
       return false;
     }
 }

@@ -5,7 +5,7 @@ import { MapFastDB } from '../_models';
 
 @Injectable()
 export class MapService {
-    constructor(private http: Http) {     console.log('Data service connected...')}
+    constructor(private http: Http) { console.log('Data service connected...')}
     private headers_var = new Headers({
       'Content-Type' : 'application/json',
       'Authorization': localStorage.getItem("beJWT")
@@ -13,7 +13,7 @@ export class MapService {
 
 
     getAll(): Observable<any> {
-        console.log("safassg");
+        console.log("get array");
         return this.http.get('/testmodel').map((response: Response) => response.json()).catch(err =>{
           return Observable.throw(err);
         });
