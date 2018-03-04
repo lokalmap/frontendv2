@@ -76,11 +76,14 @@ export class MapService {
                 updXCacheDB(cdbtemp,JSON.parse('{"name":"' + itm + '"}'));
                 let itmobj = objtmp[itm]
                 for (let j=0,len=itmobj.length;j<len;++j){
-                  let dtls:any = itmobj[j];
+                  let dtls = itmobj[j];
+                  console.log("-----------------debug : ",dtls);
+                  cdbtemp = {x:"",y:"",pID:"",iID:"",price:0,promo:{},itmR:0}
                   for (let dtl in dtls){
                       updXCacheDB(cdbtemp,JSON.parse('{"' + dtl + '":"' + dtls[dtl] + '"}'));
                   }
                   ctmp.cDBList.push(cdbtemp);
+
                 }
                 console.log("view: ",ctmp);
                 retval.push(ctmp);

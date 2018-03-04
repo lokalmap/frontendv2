@@ -54,7 +54,7 @@ export class HeaderComponent implements OnInit {
         	"li": {
         		"banana": [{
         			"y": "YYYY.FFF1",
-              "x": "XXXX.FFF2",
+              "x": "XXXX.FFFq2",
               "pID": "Provider ID asd",
         			"iID": "Item ID 123",
               "price":1,
@@ -62,7 +62,7 @@ export class HeaderComponent implements OnInit {
         			"promo": ["datef(MM,DD,YY,hh,mm)", "Date2(MM,DD,YY,hh,mm)", "metadataURL"]
         		}, {
         			"y": "YYYY.FFF23",
-              "x": "XXXX.FFF2",
+              "x": "XXXX.FF2",
               "pID": "Provider ID asd",
               "iID": "Item ID 123",
               "price":1,
