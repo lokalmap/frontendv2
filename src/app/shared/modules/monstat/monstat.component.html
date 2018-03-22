@@ -1,0 +1,28 @@
+<div  [ngClass]="classObj.classCard">
+    <div [ngClass]="classObj.classCHead">
+      <div class="row">
+        <div class="col col-xs-10">
+          {{classObj.ctvar}}
+        </div>
+          <div class="col col-xs-2 text-right">
+              <div ngbDropdown>
+                  <a href="javascript:void(0)" ngbDropdownToggle>
+                      <i class="fa fa-bars"></i> <b class="caret"></b><span class="sr-only">(current)</span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                      <a href="javascript:void(0)" class="dropdown-item">Critical <span class="badge badge-info">6</span></a>
+                      <a href="javascript:void(0)" class="dropdown-item">Warning <span class="badge badge-info"> 13</span></a>
+                      <li class="dropdown-divider"></li>
+                      <a (click)="onsave()" class="dropdown-item">Save</a>
+                      <li class="dropdown-divider"></li>
+                      <a class="dropdown-item">Delete</a>
+                  </ul>
+              </div>
+          </div>
+          <a class="fa fa-eye-slash" style="font-size:24px" (click)="chldDelete()"></a>
+      </div>
+    </div>
+    <div [ngClass]="classObj.classCBlock">
+        {{classObj.ccvar}}
+    </div>
+</div>
