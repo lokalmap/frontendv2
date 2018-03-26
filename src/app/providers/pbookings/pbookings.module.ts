@@ -13,7 +13,7 @@ import { PbookingsComponent } from './pbookings.component';;
 import { StatModule } from '../../shared';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '../../../environments/environment';
-import { MonstatModule } from '../../shared';
+import { BObjModule } from '../../shared';
 @NgModule({
     imports: [
         CommonModule,
@@ -23,7 +23,7 @@ import { MonstatModule } from '../../shared';
         NgbAlertModule.forRoot(),
         ModalModule.forRoot(),
         ChartsModule,
-        MonstatModule
+        BObjModule
 
     ],
     declarations: [

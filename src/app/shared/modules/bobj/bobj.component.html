@@ -1,0 +1,74 @@
+<div  [ngClass]="classObj.classCard">
+    <div [ngClass]="classObj.classCHead">
+      <div class="row">
+        <div class="col col-xs-10">
+          {{classObj.ctvar}}
+        </div>
+          <div class="col col-xs-2 text-right">
+              <div ngbDropdown>
+                  <a ngbDropdownToggle>
+                      <i class="fa fa-bars"></i> <b class="caret"></b><span class="sr-only">(current)</span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-right" *ngIf="!objCB">
+                      <a href="javascript:void(0)" class="dropdown-item" style="color:FireBrick">Critical <span class="badge badge-danger">6</span></a>
+                      <a href="javascript:void(0)" class="dropdown-item" style="color:Tomato">Warning <span class="badge badge-warning"> 13</span></a>
+                      <li class="dropdown-divider"></li>
+                      <a (click)="onsave()" class="dropdown-item" style="color:green">Approve</a>
+                      <li class="dropdown-divider"></li>
+                      <a class="dropdown-item" style="color:orange">For Review</a>
+                      <li class="dropdown-divider"></li>
+                      <a class="dropdown-item" style="color:red">Deny</a>
+                  </ul>
+                  <ul class="dropdown-menu dropdown-menu-right" *ngIf="objCB">
+                      <a (click)="onsend()" class="dropdown-item" style="color:green">Send</a>
+                      <li class="dropdown-divider"></li>
+                      <a class="dropdown-item" style="color:orange">Cancel</a>
+                  </ul>
+              </div>
+          </div>
+          <a class="fa fa-trash" style="font-size:24px" (click)="chldDelete()"></a>
+      </div>
+    </div>
+    <div [ngClass]="classObj.classCBlock">
+        {{classObj.ccvar}}
+        <div class="card-block table-responsive">
+          <table class="table table-sm table-hover table-striped">
+              <thead>
+              <tr>
+                  <th>#</th>
+                  <th>Item</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                  <th>Qty</th>
+                  <th>Sub</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+              </tr>
+              <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+              </tr>
+              <tr>
+                  <th scope="row">3</th>
+                  <td colspan="2">Larry the Bird</td>
+                  <td>@twitter</td>
+              </tr>
+              </tbody>
+          </table>
+        </div>
+    </div>
+    <div class="card-footer">
+        <span class="float-left">View Status {{statmsg}}</span>
+        <a href="javascript:void(0)" class="float-right card-inverse">
+            <span ><i class="fa fa-arrow-circle-right"></i></span>
+        </a>
+    </div>
+</div>

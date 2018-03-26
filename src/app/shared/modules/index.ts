@@ -1,3 +1,3 @@
 export * from './stat/stat.module';
 export * from './page-header/page-header.module';
-export {MonstatModule} from './monstat/monstat.module'
+export { BObjModule } from './bobj/bobj.module'

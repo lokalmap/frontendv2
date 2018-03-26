@@ -4,12 +4,11 @@
       <button type="button" class="btn btn-outline-success btn-sm" (click)="openModal(tmptmodalsuccess)">ADD</button>
       <button type="button" class="btn btn-outline-warning btn-sm" (click)="openModal(modalReload)">Reload</button>
     </div>
-
   </div>
   <div class="row" card-group>
     <ng-container *ngFor="let ctxvar of ctxvars;let indx = index">
       <div class="col-sm-4">
-      <monstat [classObj]="ctxvar" [objIndx]="indx" (eventref)="childEvent($event)">></monstat>
+      <bobj [classObj]="ctxvar" [objIndx]="indx" [objCB]="false" (eventref)="childEvent($event)">></bobj>
       </div><!-- /.col-sm-4 -->
     </ng-container>
   </div><!-- row -->

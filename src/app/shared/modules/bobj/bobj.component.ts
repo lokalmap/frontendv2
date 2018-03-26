@@ -2,16 +2,18 @@ import { NgModule } from '@angular/core';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-    selector: 'monstat',
-    templateUrl: './monstat.component.html'
+    selector: 'bobj',
+    templateUrl: './bobj.component.html'
 })
-export class MonstatComponent implements OnInit {
+export class BObjComponent implements OnInit {
     @Input() classObj:any
     @Input() objIndx:number;
+    @Input() objCB:string;
     @Output() eventref: EventEmitter<any> = new EventEmitter();
     private chldclassObj:any;
     private chldInfoID:string;
     private chldRIndx:number;
+    private statmsg:string;
 /*
     classCard:string;
     classCHead:string;
@@ -23,12 +25,20 @@ export class MonstatComponent implements OnInit {
     constructor() {
     }
     onsave(){
-      console.log("onSaved ");
       if(this.chldclassObj){
         if(this.chldInfoID){
-          this.eventref.emit({try:"try"});
+          this.eventref.emit({try:"Onsave"});
         }else {
             this.eventref.emit({e:"chldSave",i:this.objIndx,objRef:this.chldclassObj});
+        }
+      }
+    }
+    onsend(){
+      if(this.chldclassObj){
+        if(this.chldInfoID){
+          this.eventref.emit({try:"Onsend"});
+        }else {
+            this.eventref.emit({e:"chldsend",i:this.objIndx,objRef:this.chldclassObj});
         }
       }
     }
@@ -37,8 +47,10 @@ export class MonstatComponent implements OnInit {
       this.eventref.emit({e:"chldDel",i:this.objIndx});
     }
     ngOnInit() {
+      this.statmsg = "aa";
       console.log('classObj',this.classObj);
       console.log('objIndx : ' + this.objIndx);
+      console.log('objType : ' + this.objCB);
       this.chldclassObj = this.classObj;
       this.chldInfoID= this.classObj.infoID;
       this.chldRIndx = this.classObj.chldRIndx;

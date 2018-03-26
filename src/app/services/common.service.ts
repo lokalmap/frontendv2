@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { ProductDB } from '../_models';
+import { ProductDB, CBookings } from '../_models';
 @Injectable()
 export class CommonService {
     constructor(private http: Http) { console.log('Data service connected...')}
@@ -32,6 +32,17 @@ export class CommonService {
       return this.http.post('/ClientAccs'+ '/' + clientidvar + '/' + dburlvar, dbvar,{headers:this.headers_var}).map((response: Response) => response.json() as any).catch(err =>{
         return Observable.throw(err);
       });
+    }
+    postCBooking(dbvar:CBookings): Observable<any>{
+      console.log("dbvar : ",dbvar);
+      return this.http.post('/CBookings', dbvar,{headers:this.headers_var}).map((res: Response) => res.json() as any).catch(err =>{
+        return Observable.throw(err);
+      });
+    }
+    getCBookingByUID(_id: string): Observable<CBookings> {
+        return this.http.get('/ClientAccs/' + _id + '/cBookings' ,{headers:this.headers_var}).map((response: Response) => response.json()).catch(err =>{
+          return Observable.throw(err);
+        });
     }
     createClient( mapdb: ProductDB): Observable<ProductDB>{
       console.log(mapdb);

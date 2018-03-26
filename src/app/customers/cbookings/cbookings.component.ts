@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { CommonService } from '../../services/common.service'
 @Component({
   selector: 'app-cbookings',
   templateUrl: './cbookings.component.html',
@@ -9,19 +10,27 @@ import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
   animations: [routerTransition()]
 })
 export class CbookingsComponent implements OnInit {
-  constructor(private modalService: BsModalService) { }
+  constructor(private modalService: BsModalService,
+  private csrv:CommonService) { }
   public modalRef:BsModalRef
 
   ngOnInit() {
   }
+  onsave(){
+
+  }
   openModal(template: TemplateRef<any>) {
     console.log("++++++++++++");
-
     this.modalRef = this.modalService.show(template);
   }
-  reloadMok(){
+  reload(){
     console.log("Clicked Mok");
-    this.modalRef.hide();
+    let uid = localStorage.getItem('currentUID');
+    this.csrv.getCBookingByUID(uid).subscribe(res=>{
+      console.log("Clicked reload res ",res );
+    },err => {
+      console.log("Clicked reload with errors");
+    });
   }
 
   ctxvars:any = [
@@ -77,13 +86,33 @@ export class CbookingsComponent implements OnInit {
   ];
   childEvent(eventvar){
     console.log("Event triggered! : ")
-    if(eventvar.i !== undefined){
-        console.log("eventvar.i : ",eventvar.i);
-        if(eventvar.e == 'chldSave'){
-          console.log("chldSave! ",eventvar);
+    let varIndx = eventvar.i;
+    if(varIndx !== undefined){
 
+        console.log("eventvar.i : ",varIndx);
+        if(eventvar.e == 'chldsend'){
+          if (confirm("Confirm?")){
+              console.log("chldSend! ",eventvar);
+//              let cdatev = ;
+                eventvar.objRef.classCard = "card mb-3";
+                eventvar.objRef.classCHead = "card-header card-default";
+                eventvar.objRef.classCBlock = "card-block bg-white";
+                let uid = localStorage.getItem('currentUID');
+                this.csrv.postCBooking({usersDetailId:uid,clientAccId:uid,cdate:Date.now(),data:eventvar.objRef,status:0}).subscribe(res =>{
+//                this.ctxvars[varIndx].classCard = "card mb-3";
+//                this.ctxvars[varIndx].classCHead = "card-header card-default";
+//                this.ctxvars[varIndx].classCBlock = "card-block bg-white";
+                this.ctxvars[varIndx] = res.data;
+                console.log("Post postCBooking : ", res);
+              }, err => {
+                console.log("error +++++++++++: " + err);
+              });
+          }
         }else if(eventvar.e == 'chldDel'){
-          this.ctxvars.splice(eventvar.i,1);
+          if (confirm("Confirm?")){
+              this.ctxvars.splice(eventvar.i,1);
+          }
+
         }
 
     }

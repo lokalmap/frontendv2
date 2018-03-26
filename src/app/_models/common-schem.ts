@@ -57,3 +57,11 @@ export class ServiceDB {
   id: string;
   clientAccId: string
 }
+export class CBookings{
+  data: {};
+  cdate?: {};
+  status?: number;
+  id?: string;
+  usersDetailId?: string;
+  clientAccId?:string
+}
