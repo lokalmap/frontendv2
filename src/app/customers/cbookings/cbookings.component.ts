@@ -15,6 +15,9 @@ export class CbookingsComponent implements OnInit {
   public modalRef:BsModalRef
 
   ngOnInit() {
+    for(let indx = 0 ; indx<this.ctxvars.length; indx++){
+      this.ctxvars[indx].ccvar = this.bklistvar;
+    }
   }
   onsave(){
 
@@ -32,53 +35,59 @@ export class CbookingsComponent implements OnInit {
       console.log("Clicked reload with errors");
     });
   }
-
-  ctxvars:any = [
+  private bklistvar:any[] =  [
+    {
+      id:'1',
+      c:["2aaa","3a","4a","5a","6a"]
+    },
+    {
+      id:'2',
+      c:["2b","3bbb","4b","5b","6b"]
+    },
+    {
+      id:'3',
+      c:["2b","3bccc","4b","5b","6b"]
+    }
+  ];
+  private ctxvars:any = [
     {
       ctvar:"Card title1",
-      ccvar:"Card Content1",
       classCard:"card card-danger card-inverse mb-3",
       classCHead:"card-header card-danger",
       classCBlock:"card-block bg-white"
     },
     {
       ctvar:"Card title2",
-      ccvar:"Card Content2",
       classCard:"card mb-3",
       classCHead:"card-header card-default",
       classCBlock:"card-block bg-white"
     },
     {
       ctvar:"Card title3",
-      ccvar:"Card Content3",
       classCard:"card card-primary card-inverse mb-3",
       classCHead:"card-header card-primary",
       classCBlock:"card-block bg-white"
     },
     {
       ctvar:"Card title4",
-      ccvar:"Card Content4",
       classCard:"card card-success card-inverse mb-3",
       classCHead:"card-header card-success",
       classCBlock:"card-block bg-white"
     },
     {
       ctvar:"Card title5",
-      ccvar:"Card Content5",
       classCard:"card card-info card-inverse",
       classCHead:"card-header card-info",
       classCBlock:"card-block bg-white"
     },
     {
       ctvar:"Card title6",
-      ccvar:"Card Content6",
       classCard:"card card-warning card-inverse mb-3",
       classCHead:"card-header",
       classCBlock:"card-block"
     },
     {
       ctvar:"Card title8",
-      ccvar:"Card Content8",
       classCard:"card card-danger card-inverse",
       classCHead:"card-header card-default",
       classCBlock:"card-block bg-white"
@@ -91,28 +100,23 @@ export class CbookingsComponent implements OnInit {
 
         console.log("eventvar.i : ",varIndx);
         if(eventvar.e == 'chldsend'){
-          if (confirm("Confirm?")){
-              console.log("chldSend! ",eventvar);
+          console.log("chldSend! ",eventvar);
 //              let cdatev = ;
-                eventvar.objRef.classCard = "card mb-3";
-                eventvar.objRef.classCHead = "card-header card-default";
-                eventvar.objRef.classCBlock = "card-block bg-white";
-                let uid = localStorage.getItem('currentUID');
-                this.csrv.postCBooking({usersDetailId:uid,clientAccId:uid,cdate:Date.now(),data:eventvar.objRef,status:0}).subscribe(res =>{
+            eventvar.objRef.classCard = "card mb-3";
+            eventvar.objRef.classCHead = "card-header card-default";
+            eventvar.objRef.classCBlock = "card-block bg-white";
+            let uid = localStorage.getItem('currentUID');
+            this.csrv.postCBooking({usersDetailId:uid,clientAccId:uid,cdate:Date.now(),data:eventvar.objRef,status:0}).subscribe(res =>{
 //                this.ctxvars[varIndx].classCard = "card mb-3";
 //                this.ctxvars[varIndx].classCHead = "card-header card-default";
 //                this.ctxvars[varIndx].classCBlock = "card-block bg-white";
-                this.ctxvars[varIndx] = res.data;
-                console.log("Post postCBooking : ", res);
-              }, err => {
-                console.log("error +++++++++++: " + err);
-              });
-          }
+            this.ctxvars[varIndx] = res.data;
+            console.log("Post postCBooking : ", res);
+          }, err => {
+            console.log("error +++++++++++: " + err);
+          });
         }else if(eventvar.e == 'chldDel'){
-          if (confirm("Confirm?")){
               this.ctxvars.splice(eventvar.i,1);
-          }
-
         }
 
     }

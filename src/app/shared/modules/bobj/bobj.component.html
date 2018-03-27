@@ -30,7 +30,7 @@
       </div>
     </div>
     <div [ngClass]="classObj.classCBlock">
-        {{classObj.ccvar}}
+
         <div class="card-block table-responsive">
           <table class="table table-sm table-hover table-striped">
               <thead>
@@ -44,31 +44,74 @@
               </tr>
               </thead>
               <tbody>
-              <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-              </tr>
-              <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-              </tr>
-              <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-              </tr>
+                <tr *ngFor="let grpvar of grpvars">
+                    <th scope="row">{{grpvar.id}}</th>
+                    <td *ngFor="let item of grpvar.c">
+                      {{item}}
+                    </td>
+                </tr>
               </tbody>
           </table>
         </div>
     </div>
     <div class="card-footer">
         <span class="float-left">View Status {{statmsg}}</span>
-        <a href="javascript:void(0)" class="float-right card-inverse">
+        <a (click)="openModal(objmodal)" class="float-right card-inverse">
             <span ><i class="fa fa-arrow-circle-right"></i></span>
         </a>
     </div>
 </div>
+<ng-template #objmodal>
+  <div class="modal modal-lg" role="document">
+    <div class="modal-header modal-lg">
+      <h2 class="modal-title  pull-left">
+        Enter Value
+      </h2>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div> <!--modal-success -->
+  <div class="modal-body">
+    <div class="form-group">
+      <div class="animated fadeIn">
+        <div class="form-group">
+          <div align="center">{{classObj.ctvar}}</div>
+          <br>
+          <table class="table table-sm table-hover table-striped">
+              <thead>
+              <tr>
+                  <th>#</th>
+                  <th>Item</th>
+                  <th>Description</th>
+                  <th>Model #/Serial #</th>
+                  <th>Price</th>
+                  <th>Qty</th>
+                  <th>Sub</th>
+              </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let grpvar of grpvars">
+                    <th scope="row">{{grpvar.id}}</th>
+                    <td *ngFor="let item of grpvar.c">
+                      {{item}}
+                    </td>
+                </tr>
+                <tr>
+                <td colspan="5"></td>
+                <td><strong>Sum</strong>
+                </td>
+                <td><strong>$123.55</strong>
+                </td>
+              </tr>
+              </tbody>
+          </table>
+          <div align="right">
+            <button type="button" class="btn btn-outline-danger btn-sm" (click)="chldDelete(true)">Delete</button>
+            <button type="button" class="btn btn-outline-success btn-sm" (click)="onsend(true)">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
