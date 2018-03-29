@@ -63,6 +63,14 @@ export class BObjComponent implements OnInit {
         this.modalRef.hide();
       }
     }
+    childCancelBK(bkID:string){
+      if (bkID){
+        console.log("childCancelBK !!! ");
+        this.eventref.emit({e:"chldCancelBK",i:this.objIndx,bkID:bkID});
+        this.modalRef.hide();
+      }else{ alert("Please Enter Booking ID Number")}
+
+    }
     ngOnInit() {
       this.statmsg = "aa";
       console.log('classObj',this.classObj);

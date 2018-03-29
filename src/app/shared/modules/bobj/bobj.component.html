@@ -22,7 +22,7 @@
                   <ul class="dropdown-menu dropdown-menu-right" *ngIf="objCB">
                       <a (click)="onsend()" class="dropdown-item" style="color:green">Send</a>
                       <li class="dropdown-divider"></li>
-                      <a class="dropdown-item" style="color:orange">Cancel</a>
+                      <a class="dropdown-item" style="color:aroon" (click)="openModal(objmodal_cancel)">Cancel</a>
                   </ul>
               </div>
           </div>
@@ -109,6 +109,33 @@
           <div align="right">
             <button type="button" class="btn btn-outline-danger btn-sm" (click)="chldDelete(true)">Delete</button>
             <button type="button" class="btn btn-outline-success btn-sm" (click)="onsend(true)">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #objmodal_cancel>
+  <div class="modal modal-lg" role="document">
+    <div class="modal-header modal-lg">
+      <h2 class="modal-title  pull-left">
+        Enter Value
+      </h2>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div> <!--modal-success -->
+  <div class="modal-body">
+    <div class="form-group">
+      <div class="animated fadeIn">
+        <div class="form-group">
+          <label for="company">Confirm Booking Cancel</label>
+          <input type="text" class="form-control" #bkid placeholder="Enter Booking ID#">
+          <div align="right">
+            <button type="button" class="btn btn-outline-warning btn-sm" (click)="this.modalRef.hide()">Back</button>
+            <button type="button" class="btn btn-outline-danger btn-sm" (click)="childCancelBK(bkid.value)">Confirm Delete</button>
           </div>
         </div>
       </div>

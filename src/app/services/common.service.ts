@@ -33,6 +33,11 @@ export class CommonService {
         return Observable.throw(err);
       });
     }
+    deleteCBookingByUID(_id: string): Observable<CBookings> {
+        return this.http.delete('/CBookings/' + _id,{headers:this.headers_var}).map((res: Response) => res.json()).catch(err =>{
+          return Observable.throw(err);
+        });
+    }
     postCBooking(dbvar:CBookings): Observable<any>{
       console.log("dbvar : ",dbvar);
       return this.http.post('/CBookings', dbvar,{headers:this.headers_var}).map((res: Response) => res.json() as any).catch(err =>{
@@ -41,6 +46,24 @@ export class CommonService {
     }
     getCBookingByUID(_id: string): Observable<CBookings> {
         return this.http.get('/ClientAccs/' + _id + '/cBookings' ,{headers:this.headers_var}).map((response: Response) => response.json()).catch(err =>{
+          return Observable.throw(err);
+        });
+    }
+
+
+    deletePBookingByUID(_id: string): Observable<CBookings> {
+        return this.http.delete('/PBookings/' + _id,{headers:this.headers_var}).map((res: Response) => res.json()).catch(err =>{
+          return Observable.throw(err);
+        });
+    }
+    postPBooking(dbvar:CBookings): Observable<any>{
+      console.log("dbvar : ",dbvar);
+      return this.http.post('/PBookings', dbvar,{headers:this.headers_var}).map((res: Response) => res.json() as any).catch(err =>{
+        return Observable.throw(err);
+      });
+    }
+    getPBookingByUID(_id: string): Observable<CBookings> {
+        return this.http.get('/UsersDetails/' + _id + '/pBookings' ,{headers:this.headers_var}).map((response: Response) => response.json()).catch(err =>{
           return Observable.throw(err);
         });
     }

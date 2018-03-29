@@ -19,9 +19,6 @@ export class CbookingsComponent implements OnInit {
       this.ctxvars[indx].ccvar = this.bklistvar;
     }
   }
-  onsave(){
-
-  }
   openModal(template: TemplateRef<any>) {
     console.log("++++++++++++");
     this.modalRef = this.modalService.show(template);
@@ -116,7 +113,18 @@ export class CbookingsComponent implements OnInit {
             console.log("error +++++++++++: " + err);
           });
         }else if(eventvar.e == 'chldDel'){
-              this.ctxvars.splice(eventvar.i,1);
+          this.ctxvars.splice(eventvar.i,1);
+        }else if(eventvar.e == 'chldCancelBK'){
+          console.log("chldCancelBK ",eventvar);
+          let bkID = eventvar.bkID;
+          this.csrv.deleteCBookingByUID(bkID).subscribe(res =>{
+            //alert(res.id);
+            console.log("Successfully deteleted ",res);
+            this.ctxvars.splice(eventvar.i,1);
+          },err =>{
+            console.log("Error deleteCBookingByUID ",err);
+          });
+
         }
 
     }

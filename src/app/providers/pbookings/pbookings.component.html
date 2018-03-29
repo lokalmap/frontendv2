@@ -2,13 +2,14 @@
   <div class="row" [@routerTransition]>
     <div class="col-12 text-right">
       <button type="button" class="btn btn-outline-success btn-sm" (click)="openModal(tmptmodalsuccess)">ADD</button>
-      <button type="button" class="btn btn-outline-warning btn-sm" (click)="openModal(modalReload)">Reload</button>
+      <button type="button" class="btn btn-outline-warning btn-sm" (click)="reload()">Reload</button>
     </div>
+
   </div>
   <div class="row" card-group>
     <ng-container *ngFor="let ctxvar of ctxvars;let indx = index">
-      <div class="col-sm-4">
-      <bobj [classObj]="ctxvar" [objIndx]="indx" [objCB]="false" (eventref)="childEvent($event)">></bobj>
+      <div class="col-sm-6">
+      <bobj [classObj]="ctxvar" [objIndx]="indx" [objCB]="true" (eventref)="childEvent($event)">></bobj>
       </div><!-- /.col-sm-4 -->
     </ng-container>
   </div><!-- row -->
@@ -31,8 +32,8 @@
     </div><!-- /.col-sm-4 -->
 </ng-template>
 <ng-template #tmptmodalsuccess>
-  <div class="modal-success" role="document">
-    <div class="modal-header">
+  <div class="modal modal-lg" role="document">
+    <div class="modal-header modal-lg">
       <h2 class="modal-title  pull-left">
         Enter Value
       </h2>
@@ -63,16 +64,4 @@
       </button>
     </div>
   </div> <!--modal-success -->
-  <div class="modal-body">
-    <div class="form-group">
-      <div class="animated fadeIn">
-        <div class="form-group">
-          <label for="company">Name</label>
-          <input type="text" class="form-control" id="inptName" placeholder="Enter name">
-          <br>
-          <button type="button" class="btn btn-outline-warning btn-sm" (click)="reloadMok()">Reload</button>
-        </div>
-      </div>
-    </div>
-  </div>
 </ng-template>
