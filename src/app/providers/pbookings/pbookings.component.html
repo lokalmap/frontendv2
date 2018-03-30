@@ -9,7 +9,7 @@
   <div class="row" card-group>
     <ng-container *ngFor="let ctxvar of ctxvars;let indx = index">
       <div class="col-sm-6">
-      <bobj [classObj]="ctxvar" [objIndx]="indx" [objCB]="true" (eventref)="childEvent($event)">></bobj>
+      <bobj [classObj]="ctxvar" [objIndx]="indx" [objCB]="false" (eventref)="childEvent($event)">></bobj>
       </div><!-- /.col-sm-4 -->
     </ng-container>
   </div><!-- row -->

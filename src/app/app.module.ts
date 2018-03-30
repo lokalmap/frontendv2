@@ -26,7 +26,7 @@ export function HttpLoaderFactory(http: Http) {
         AppComponent,
         AlertComponent,
         InfoComponent,
-        InfoeditComponent
+        InfoeditComponent,
     ],
     imports: [
         BrowserModule,

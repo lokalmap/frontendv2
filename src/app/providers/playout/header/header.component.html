@@ -3,7 +3,7 @@
         <button class="navbar-toggler navbar-toggler-right" (click)="toggleSidebar()">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" routerLink="/customers/dashboard" [routerLinkActive]="['router-link-active']">LokalMap</a>
+        <a class="navbar-brand" routerLink="/" [routerLinkActive]="['router-link-active']">LokalMap</a>
         <form class="form-inline my-2 my-lg-0" (ngSubmit)="onSubmitFN(inptvar.value)">
             <input class="form-control mr-sm-2" type="text" placeholder="{{ 'Search' | translate }}" #inptvar>
         </form>
@@ -81,9 +81,9 @@
                         <i class="fa fa-user"></i> John Smith <b class="caret"></b>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" [routerLink]="['/providers/info']"><i class="fa fa-fw fa-user"></i> {{ 'Profile' | translate }}</a>
+                        <a class="dropdown-item" [routerLink]="['/info']"><i class="fa fa-fw fa-user"></i> {{ 'Profile' | translate }}</a>
                         <a class="dropdown-item" [routerLink]="['/providers/dashboard']"><i class="fa fa-fw fa-dashboard"></i> {{ 'Dashboard' | translate }}</a>
-                        <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-fw fa-gear"></i> {{ 'Settings' | translate }}</a>
+                        <a class="dropdown-item" [routerLink]="['/settings']"><i class="fa fa-fw fa-gear"></i> {{ 'Settings' | translate }}</a>
                         <a class="dropdown-item" [routerLink]="['/login']" (click)="onLoggedout()"><i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' | translate }} </a>
                     </div>
                 </li>

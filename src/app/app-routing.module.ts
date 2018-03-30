@@ -11,6 +11,7 @@ const routes: Routes = [
     { path: 'info', component: InfoComponent, canActivate: [AuthGuard]},
     { path: 'info/:id', component: InfoeditComponent, canActivate: [AuthGuard]},
     { path: 'login', loadChildren: './login/login.module#LoginModule' },
+    { path: 'settings', loadChildren: './shared/components/settings/setting.module#SettingModule', canActivate: [AuthGuard] },
     { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
     { path: 'error', loadChildren: './shared/components/err-routes/app-err.module#AppErrModule' },
     { path: 'not-found', loadChildren: './not-found/not-found.module#NotFoundModule' },
