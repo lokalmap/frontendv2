@@ -11,6 +11,7 @@ import { UserInfo } from '../../../_models';
 export class SettingComponent implements OnInit {
   userinfo : UserInfo = new UserInfo;
   private renderflg:boolean = false;
+  public isCollapsed = false;
   constructor(private usersrv: UserService) { }
 
   ngOnInit() {
