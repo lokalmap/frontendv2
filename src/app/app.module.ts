@@ -15,6 +15,9 @@ import { AlertComponent } from './_directives/index';
 import { InfoComponent } from './shared/components/info/info.component';
 import { InfoeditComponent } from './shared/components/info-edit/info-edit.component';
 
+//test data
+
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
     // for development

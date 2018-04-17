@@ -1,8 +1,8 @@
 <div class="row" [@routerTransition]>
-  <div class="col-12 text-right">
-    <button type="button" class="btn btn-outline-success btn-sm" (click)="openModal(tmptmodalsuccess)">Add Entry</button>
-    <button type="button" class="btn btn-outline-warning btn-sm" (click)="openModal(tmptmodalwarning)">MODIFY</button>
-    <button type="button" class="btn btn-outline-danger btn-sm" (click)="openModal(tmptmodaldanger)">DELETE</button>
+  <div class="col-12 text-right mb-4">
+    <button type="button" class="btn btn-success btn-sm" (click)="openModal(tmptmodalsuccess)">Add Entry</button>
+    <button type="button" class="btn btn-warning btn-sm" (click)="openModal(tmptmodalwarning)">MODIFY</button>
+    <button type="button" class="btn btn-danger btn-sm" (click)="openModal(tmptmodaldanger)">DELETE</button>
   </div>
 </div>
 <div>
@@ -12,7 +12,7 @@
           <table class="table table-hover table-bordered">
               <thead>
               <tr>
-                  <th>#ID</th>
+                <!--  <th>#ID</th> -->
                   <th>Name</th>
                   <th>Description</th>
                   <th>Unit Price</th>
@@ -28,12 +28,49 @@
               </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let grpvar of grpvars">
+                <tr  *ngFor="let test of data" (click)="getData()">
+                      <th scope="row">{{ test.name}}</th>
+                      <td >
+                      {{ test.desc}}
+                      </td>
+                      <td >
+                      {{ test.price}}
+                      </td>
+                      <td >
+                      {{ test.qty}}
+                      </td>
+                      <td >
+                      {{ test.utype}}
+                      </td>
+                      <td >
+                      {{ test.btcExp}}
+                      </td>
+                      <td >
+                      {{ test.brand}}
+                      </td>
+                      <td >
+                      {{ test.itmInfo}}
+                      </td>
+                      <td >
+                      {{ test.supInfo}}
+                      </td>
+                      <td >
+                      {{ test.disc}}
+                      </td>
+                      <td >
+                      {{ test.cid}}
+                      </td>
+                      <td >
+                      {{ test.vd}}
+                      </td>
+
+                </tr>
+              <!--  <tr *ngFor="let grpvar of grpvars">
                     <th scope="row">{{grpvar.id}}</th>
                     <td *ngFor="let item of grpvar.c">
                       {{item}}
                     </td>
-                </tr>
+                </tr> -->
               </tbody>
           </table>
       </div>
@@ -68,66 +105,102 @@
   </div> <!--modal-success -->
     <div class="form-group">
       <div class="animated fadeIn">
-        <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmitFN(f)"  novalidate>
-            <div class="form-group">
-              <div class="row">
-                <div class="col-xl-4 text-xs-center">
-                  General Type:
-                </div>
-                <div class="col-xl-4 text-xs-center">
-                  <input type="radio" value="Product" name="gentype" ngModel #gentype="ngModel"> Product<br>
-                </div>
-                <div class="col-xl-4 text-xs-center">
-                  <input type="radio" value="Service" name="gentype" ngModel #gentype="ngModel"> Service<br>
-                </div>
-              </div>
-              <label for="company">Name</label>
-              <input type="text" class="form-control" placeholder="Enter name" name="namestr" ngModel required #namestr="ngModel">
-              <div class="form-group" *ngIf="(modaladdctr==1)">
-                <label>Price</label>
-                <input type="number" class="form-control" placeholder="Enter price" name="price" ngModel required #price="ngModel">
 
-                <label>Category</label>
-                <input type="text" class="form-control" placeholder="Enter category" name="cat" ngModel required #cat="ngModel">
+    <!-- Password Field  -->
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+      <form [formGroup]="form" (submit)="onSubmit()">
+        <div class="btn_radio">
+       <input class="mr-3" type="radio" name="select" value='product' formControlName="select" [(ngModel)]='select'>Product &nbsp;
+       <input class="mr-3" type="radio" name='select' value='service' formControlName="select" [(ngModel)]='select'>Service
+       <!--<button class="btn btn-success"type="button" [disabled]="form.controls['select'].invalid">Next</button> -->
+        </div>
+       <div class="appear" *ngIf="(modaladdctr==1)">
+         <div class="container">
+           <label for="company">Name</label>
 
-                <label>Quantity</label>
-                <input type="number" class="form-control" placeholder="Enter quantity" name="qty" ngModel required #qty="ngModel">
-                <label>Model / Unit Type</label>
-                <input type="text" class="form-control" placeholder="Enter model or unit type" name="utype" ngModel required #utype="ngModel">
-                <label>Description</label>
-                <input type="text" class="form-control" placeholder="Enter Description" name="desc" ngModel required #desc="ngModel">
-              </div>
-              <div class="form-group" *ngIf="(modaladdctr==2)">
-                <label>Caption</label>
-                <input type="text" class="form-control" placeholder="Enter Caption" name="caption" ngModel required #caption="ngModel">
-                <label>Tags</label>
-                <input type="search" class="form-control" placeholder="Enter Tags" name="tags" ngModel required #tags="ngModel">
-                <label>Brand</label>
-                <input type="text" class="form-control" placeholder="Enter Brand" name="brand" ngModel required #brand="ngModel">
-                <label>Variant / Color</label>
-                <input type="text" class="form-control" placeholder="Enter Variant" name="variant" ngModel required #variant="ngModel">
-                <label>Serial Number</label>
-                <input type="text" class="form-control" placeholder="Serial Number" name="sn_num" ngModel required #sn_num="ngModel">
-              </div>
-              <div class="form-group" *ngIf="(modaladdctr==3)">
-                <label>Features</label>
-                <input type="text" class="form-control" placeholder="Enter Features" name="features" ngModel required #features="ngModel">
-                <label>Alias</label>
-                <input type="text" class="form-control" placeholder="Enter Alias / AKA" name="alias" ngModel required #alias="ngModel">
-                <label>End date validity</label>
-                <input type="Date" class="form-control" placeholder="Enter Quantity" name="evdte" ngModel required #evdte="ngModel">
-                <label>Custom search tags</label>
-                <input type="search" class="form-control" placeholder="Enter Custom Tags" name="searchTags" ngModel required #searchTags="ngModel">
-              </div>
-              <div class="form-group">
-                <button class="btn rounded-btn" type= "button" (click)="backfn()">Back</button>
-                <button class="btn rounded-btn" type= "submit">Submit</button>
-                <button class="btn rounded-btn" type= "button" (click)="nextfn()">Next</button>
-              </div>
-            </div>
-        </form>
+           <input type="text" class="form-control" placeholder="Enter name" name="namestr" formControlName="namestr" >
+          <ul class="help-block">
+            <li *ngIf="form.controls.namestr.errors?.required && form.controls.namestr.dirty">This field is required</li>
+            <li *ngIf="form.controls.namestr.errors?.minlength && form.controls.namestr.dirty || form.controls.namestr.errors?.maxlength && form.controls.namestr.dirty ">Minimum characters: 5, Maximum characters: 15</li>
+          </ul>
+
+           <label class="mt-2">Price</label>
+           <input type="number" class="form-control" placeholder="Enter price" name="price"  formControlName="price">
+           <ul class="help-block">
+             <li *ngIf="form.controls.price.errors?.required && form.controls.price.dirty">This field is required</li>
+           </ul>
+
+           <label class="mt-2">Category</label>
+           <input type="text" class="form-control" placeholder="Enter category" name="cat" formControlName="cat">
+           <ul class="help-block">
+             <li *ngIf="form.controls.cat.errors?.required && form.controls.cat.dirty">This field is required</li>
+           </ul>
+           <label class="mt-2">Quantity</label>
+           <input type="number" class="form-control" placeholder="Enter quantity" name="qty" formControlName="qty">
+           <ul class="help-block">
+             <li *ngIf="form.controls.qty.errors?.required && form.controls.qty.dirty">This field is required</li>
+           </ul>
+           <label class="mt-2">Model / Unit Type</label>
+           <input type="text" class="form-control" placeholder="Enter model or unit type" name="utype" formControlName="utype">
+           <ul class="help-block">
+             <li *ngIf="form.controls.utype.errors?.required && form.controls.utype.dirty">This field is required</li>
+             <li *ngIf="form.controls.utype.errors?.minlength && form.controls.utype.dirty || form.controls.utype.errors?.maxlength && form.controls.utype.dirty ">Minimum characters: 5, Maximum characters: 15</li>
+           </ul>
+           <label class="mt-2">Description</label>
+           <input type="text" class="form-control" placeholder="Enter Description" name="desc" formControlName="desc">
+
+         </div>
+
+       </div>
+
+
+        <!--  <input type="radio" value="Product" name="gentype"  ngModel #gentype="ngModel"> Product<br> -->
+        <!-- Validation -->
+        <div class="form-group" *ngIf="(modaladdctr==2)">
+          <div class="container">
+          <label>Caption</label>
+          <input type="text" class="form-control" placeholder="Enter Caption" name="caption" formControlName="caption" >
+          <label class="mt-2">Tags</label>
+          <input type="search" class="form-control" placeholder="Enter Tags" name="tags" formControlName="tags">
+          <label class="mt-2">Brand</label>
+          <input type="text" class="form-control" placeholder="Enter Brand" name="brand" formControlName="brand">
+          <label class="mt-2">Variant / Color</label>
+          <input type="text" class="form-control" placeholder="Enter Variant" name="variant" formControlName="variant">
+          <label class="mt-2">Serial Number</label>
+          <input type="text" class="form-control" placeholder="Serial Number" name="sn_num" formControlName="sn_num">
+        </div>
+        </div>
+
+        <div class="form-group" *ngIf="(modaladdctr==3)">
+          <div class="container">
+          <label class="mt-2">Features</label>
+          <input type="text" class="form-control" placeholder="Enter Features" name="features" formControlName="features" >
+          <label class="mt-2">Alias</label>
+          <input type="text" class="form-control" placeholder="Enter Alias / AKA" name="alias" formControlName="alias" >
+          <label class="mt-2">End date validity</label>
+          <input type="Date" class="form-control" placeholder="Enter Quantity" name="evdte" formControlName="evdte">
+          <label class="mt-2">Custom search tags</label>
+          <input type="search" class="form-control" placeholder="Enter Custom Tags" name="searchTags" formControlName="searchTags">
+        </div>
+        </div>
+        <div class="btn_click">
+          <button [disabled]="!form.controls.select.dirty" class="btn btn-primary" type= "button" (click)="nextfn()">Next</button>
+          <button [disabled]="!form.valid" class="btn btn-success" type= "submit" >Submit</button>
+          <button [disabled]="!form.controls.caption.dirty" class="btn btn-primary" type= "button" (click)="backfn()">Back</button>
+        </div>
+         </form>
+        </div>
       </div>
     </div>
+
+<!--    <pre>{{form.value | json}}</pre>
+ <pre>{{form.valid}}</pre> -->
+
+      </div>
+    </div>
+
 </ng-template>
 
 <ng-template #tmptmodalwarning>
