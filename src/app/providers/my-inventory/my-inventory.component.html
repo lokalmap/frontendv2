@@ -28,40 +28,45 @@
               </tr>
               </thead>
               <tbody>
-                <tr  *ngFor="let test of data" (click)="getData()">
+                <tr  *ngFor="let test of data; let i = index" (click)="getData()">
                       <th scope="row">{{ test.name}}</th>
                       <td >
-                      {{ test.desc}}
+                        {{ test.desc}}
                       </td>
                       <td >
-                      {{ test.price}}
+                        {{ test.price}}
                       </td>
                       <td >
-                      {{ test.qty}}
+                        {{ test.qty}}
                       </td>
                       <td >
-                      {{ test.utype}}
+                        {{ test.utype}}
                       </td>
                       <td >
-                      {{ test.btcExp}}
+                        {{ test.btcExp}}
                       </td>
                       <td >
-                      {{ test.brand}}
+                        {{ test.brand}}
                       </td>
                       <td >
-                      {{ test.itmInfo}}
+                        {{ test.itmInfo}}
                       </td>
                       <td >
-                      {{ test.supInfo}}
+                        {{ test.supInfo}}
                       </td>
                       <td >
-                      {{ test.disc}}
+                        {{ test.disc}}
                       </td>
                       <td >
-                      {{ test.cid}}
+                        {{ test.cid}}
                       </td>
                       <td >
-                      {{ test.vd}}
+                        {{ test.vd}}
+
+                      </td>
+                      <td >
+                          <input type="checkbox" style="font-size: 1px; float-right"  [checked]="test.stat">
+                          <i class="fa fa-trash style=font-size: 1px;" (click)="delEntry(i)"></i>
                       </td>
 
                 </tr>
@@ -133,6 +138,9 @@
            </ul>
 
            <label class="mt-2">Category</label>
+           <select multiple class="form-control" formControlName="cat" size="4">
+            <option *ngFor="let item of catOption">{{item}}</option>
+          </select>
            <input type="text" class="form-control" placeholder="Enter category" name="cat" formControlName="cat">
            <ul class="help-block">
              <li *ngIf="form.controls.cat.errors?.required && form.controls.cat.dirty">This field is required</li>
@@ -186,9 +194,9 @@
         </div>
         </div>
         <div class="btn_click">
-          <button [disabled]="!form.controls.select.dirty" class="btn btn-primary" type= "button" (click)="nextfn()">Next</button>
-          <button [disabled]="!form.valid" class="btn btn-success" type= "submit" >Submit</button>
           <button [disabled]="!form.controls.caption.dirty" class="btn btn-primary" type= "button" (click)="backfn()">Back</button>
+          <button [disabled]="!form.valid" class="btn btn-success" type= "submit" >Submit</button>
+          <button [disabled]="!form.controls.select.dirty" class="btn btn-primary" type= "button" (click)="nextfn()">Next</button>
         </div>
          </form>
         </div>

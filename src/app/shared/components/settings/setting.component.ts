@@ -8,6 +8,7 @@ import { UserInfo } from '../../../_models';
   styleUrls: ['./setting.component.scss'],
   animations: [routerTransition()]
 })
+
 export class SettingComponent implements OnInit {
   userinfo : UserInfo = new UserInfo;
   private renderflg:boolean = false;
@@ -48,6 +49,7 @@ export class SettingComponent implements OnInit {
     console.log('onsaved_cat');
   }
   ngOnInit() {
+    sCat_gvar.set(this.sCat_var);
     this.renderflg = false;
     this.usersrv.getById(sessionStorage.getItem('currentUID')).subscribe(response => {
         this.userinfo =  response as UserInfo;
@@ -58,3 +60,43 @@ export class SettingComponent implements OnInit {
     this.renderflg = true;
   }
 }
+
+export var sCat_gvar = (() => {
+    var private_arry = [];
+    function pushfn(val):any{
+      return private_arry.push(val);
+    }
+    function countfn():number{
+      return private_arry.length;
+    }
+    function setfn(val):void{
+      private_arry = null;
+      private_arry = val;
+    }
+    function getfn(val?:number):any{
+      if(val!==undefined){
+        return private_arry[val];
+      }
+      return private_arry;
+    }
+    function putfn(indx?:number,obj?:any):any{
+      if(obj!==undefined && indx!==undefined){
+        private_arry[indx] = obj;
+        return 'ok';
+      }
+      return {error:'error missing params'};
+    }
+    function initfn(){
+      console.log("O+++ ",this.sCat_var);
+      private_arry = this.sCat_var;
+      return this.sCat_var;
+    }
+    return {
+      init:initfn,
+      push:pushfn,
+      count:countfn,
+      set:setfn,
+      get:getfn,
+      put:putfn
+    }
+})()

@@ -6,6 +6,7 @@ import { CommonService } from '../../services/common.service';
 import { ProductDB, ServiceDB} from '../../_models'
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'; //test data
 import { Data } from '../../_models/data.model';
+import { sCat_gvar } from '../../shared/components/settings/setting.component';
 @Component({
   selector: 'app-my-inventory',
   templateUrl: './my-inventory.component.html',
@@ -22,12 +23,21 @@ export class MyInventoryComponent implements OnInit {
    form: FormGroup; // test data
 
    data: Data[] = [
-   new Data('Iphone7', '38.3 x 67.1 x 7.1 mm (5.44 x 2.64 x 0.28 in)', 12000, 5, 'small', '09062015',
-    'Apple', 'iOS 10.0.1, upgradable to iOS 11.3', 'rex', '30%', 2909391, '9 days'),
-   new Data('Iphone7', '38.3 x 67.1 x 7.1 mm (5.44 x 2.64 x 0.28 in)', 12001, 3, 'big', '09062016',
-    'Apples', 'iOS 10.0.1, upgradable to iOS 11.45', 'hydie', '20%', 123313, '8 days'),
- ];
-
+     new Data('Iphone7', '38.3 x 67.1 x 7.1 mm (5.44 x 2.64 x 0.28 in)', 12000, 5, 'small', '09062015',
+      'Apple', 'iOS 10.0.1, upgradable to iOS 11.3', 'rex', '30%', 2909391, '9 days',true),
+     new Data('Iphone7', '38.3 x 67.1 x 7.1 mm (5.44 x 2.64 x 0.28 in)', 12001, 3, 'big', '09062016',
+      'Apples', 'iOS 10.0.1, upgradable to iOS 11.45', 'hydie', '20%', 123313, '8 days',false),
+    ];
+    catOption:any=['Accounting Services','Advertising Services','Auto Services','Building Services','Boat Services','Bridal Services','Business Services','Car Rental Agencies',
+                              'Catering Services','Children’s Services','Check-Cashing Services','Cleaning Services','Check-Cashing Services','Consulting Services','Contractor Services',
+                              'Copy-writing & Proof Services','Cover Letter/Resume Services','Dating Services','Decorating Services','Designing Services','DJ Businesses','Dry Cleaning & Laundry',
+                              'Editorial Services','Educational Services','Electrical Services','Employment Services','Environmental Services','Errand Services','Event Planning','Eye-Care Centers',
+                              'Financial Services','Fitness Centers','Hair Salons','Handyman Services','Health-Care Services','Home-Improvement Services','Lawn Care & Landscaping','Limousine Services',
+                              'Maintenance Services','Message Therapist','Moving Services','Painting Services','Personal-Care Services','Personal Chef','Pest Control Services','Pet-Care Services',
+                              'Photography Services','Plant Maintenance Services','Plumbing Services','Pool Services','Postal & Business Centers','Printing Services','Private Investigation',
+                              'Property Inspection','Property Management Services','Publishing Services','Real Estate Services','Recreational Services','Referral Services','Remodeling/Renovation Services',
+                              'Repair Services','Security Services','Senior Care Services','Shipping Services','Shoe Repair','Sign Stores','Staffing Services','Tanning Services','Tax Services',
+                              'Tech Services','Travel Agencies','Training Businesses','Tutoring Services','Videotaping Services','Web-Site Services','Wedding Services','Weight-Control Centers','Miscellaneous Services'];
      // name,  Description, unit price, quantity, unitType
 
 
@@ -52,10 +62,12 @@ export class MyInventoryComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
   ngOnInit() {
+    //this.catOption = sCat_gvar.get();
+
   }
   getData(){
     console.log("get data");
-  
+
   }
   callthisf(){
     console.log("test1");
@@ -67,6 +79,13 @@ export class MyInventoryComponent implements OnInit {
   nextfn(){
     this.modaladdctr++;
     console.log("++ : " + this.modaladdctr);
+  }
+  delEntry(indx?:number){
+    console.log("delEntry " + indx);
+    if(indx!=undefined){
+      this.data.splice(indx,1);
+    }
+
   }
   onSubmitFN(fvar: any){
     console.log("fvar.value.gentype: " + fvar.value.gentype);
@@ -157,11 +176,9 @@ export class MyInventoryComponent implements OnInit {
 
 
 onSubmit() {
-
-
   this.modaladdctr = 0;
   // Create user object from user's input
-  const user = {
+  const invEntry = {
     select: this.form.get('select').value, // Username input field
     namestr: this.form.get('namestr').value, // Password input field
     price: this.form.get('price').value,
@@ -180,24 +197,21 @@ onSubmit() {
   }
 
   this.data.push({
-     name: user.namestr,
-     desc: user.desc,
-     price: user.price,
-     qty: user.qty,
-     utype: user.utype,
+     name: invEntry.namestr,
+     desc: invEntry.desc,
+     price: invEntry.price,
+     qty: invEntry.qty,
+     utype: invEntry.utype,
      btcExp: Date(),
-     brand: user.brand,
+     brand: invEntry.brand,
      itmInfo: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt u ',
      supInfo: 'dipz',
      disc: '10%',
      cid: 10203848,
-     vd: user.evdte
+     vd: invEntry.evdte,
+     stat:true
   });
-
   this.form.reset();
-
-
-
 }
 
 
