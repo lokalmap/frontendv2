@@ -1,15 +1,24 @@
-<h1>DashBoard</h1>
+
 <div  [@routerTransition]>
+<div class="container mt-5">
   <div class="row">
-    <div class="col-6 col-lg-3">
+    <div class="col-6 col-lg-3 col-sm-6">
       <div class="card">
         <div class="card-block p-1 clearfix">
-          <i class="fa fa-cogs bg-primary p-1 font-2xl mr-1 float-left"></i>
+          <i class="fa fa-child bg-success p-1 font-2xl mr-1 float-left"></i>
           <div class="text-uppercase text-muted font-weight-bold font-xs text-right mb-0 mt-h">Successfull Bookings</div>
           <div class="h5 text-right">{{var_sbook_ctr}} - {{var_sbook_amt}}{{var_currency}}</div>
         </div>
-        <div class="card-footer px-1 py-h">
-          <a class="font-weight-bold font-xs btn-block text-muted" href="#">View More<i class="fa fa-angle-right float-right font-lg"></i></a>
+      <div class="card-footer px-1 py-h">
+          <a *ngIf="!var_test" class="font-weight-bold font-xs btn-block text-muted" (click)="click()">View More<i class="fa fa-angle-right float-right font-lg"></i></a>
+          <div *ngIf="var_test" class="container">
+            <ul>
+            <li>Transaction <b>complete</b> with: <strong> Jeff</strong></li>
+            <li>Transaction <b>complete</b> with: <strong> Rex</strong></li>
+            <li>Transaction <b>complete</b> with: <strong> Lou</strong></li>
+          </ul>
+          </div>
+           <i *ngIf="var_test" class="fa fa-angle-up float-right font-lg" (click)="hide()"></i>
         </div>
       </div>
     </div><!--/.col-->
@@ -22,7 +31,15 @@
           <div class="h5 text-right">{{var_pbook_ctr}} - {{var_pbook_amt}}{{var_currency}}</div>
         </div>
         <div class="card-footer px-1 py-h">
-          <a class="font-weight-bold font-xs btn-block text-muted" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+            <a  *ngIf="!var_test1" class="font-weight-bold font-xs btn-block text-muted" (click)="pbook()">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+            <div *ngIf="var_test1" class="container">
+              <ul>
+              <li><em>Pending</em> Transaction with: <strong> Jeff</strong></li>
+              <li><b>Ongoing</b> Transaction with: <strong> Rex</strong></li>
+              <li><em>Pending</em> Transaction with: <strong> Lou</strong></li>
+            </ul>
+            </div>
+             <i *ngIf="var_test1" class="fa fa-angle-up float-right font-lg" (click)="hide1()"></i>
         </div>
       </div>
     </div><!--/.col-->
@@ -35,7 +52,17 @@
           <div class="h5 text-right">{{var_cbook_ctr}} - {{var_cbook_amt}}{{var_currency}}</div>
         </div>
         <div class="card-footer px-1 py-h">
-          <a class="font-weight-bold font-xs btn-block text-muted" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+          <a *ngIf="!var_test2" class="font-weight-bold font-xs btn-block text-muted" (click)="cbook()">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+          <div *ngIf="var_test2" class="container">
+            <ul>
+            <li><i>Canceled</i> Transaction with: <strong> Jeff</strong></li>
+            <li><i>Canceled</i> Transaction with: <strong> Rex</strong></li>
+            <li><i>Canceled</i> Transaction with: <strong> Lou</strong></li>
+          </ul>
+          </div>
+           <i *ngIf="var_test2" class="fa fa-angle-up float-right font-lg" (click)="hide2()"></i>
+
+
         </div>
       </div>
     </div><!--/.col-->
@@ -44,18 +71,26 @@
     <div class="col-6 col-lg-3">
       <div class="card">
         <div class="card-block p-1 clearfix">
-          <i class="fa fa-moon-o bg-warning p-1 font-2xl mr-1 float-left"></i>
+          <i class="fa fa-users bg-warning p-1 font-2xl mr-1 float-left"></i>
           <div class="text-uppercase text-muted font-weight-bold font-xs text-right mb-0 mt-h">Todays Vistor</div>
           <div class="h5 text-right">{{var_tvisitor_ctr}}</div>
         </div>
         <div class="card-footer px-1 py-h">
-          <a class="font-weight-bold font-xs btn-block text-muted" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+          <a *ngIf="!var_test3" class="font-weight-bold font-xs btn-block text-muted" (click)="visit()">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+          <div *ngIf="var_test3" class="container">
+            <ul>
+            <li><em>Viewed</em> your products: <strong> Jeff</strong></li>
+            <li><em>Viewed</em> your products: <strong> Rex</strong></li>
+            <li><em>Viewed</em> your products: <strong> Lou</strong></li>
+          </ul>
+          </div>
+           <i *ngIf="var_test3" class="fa fa-angle-up float-right font-lg" (click)="hide3()"></i>
         </div>
       </div>
     </div><!--/.col-->
 </div>
 
-<div class="row">
+<div class="row mt-3">
   <div class="col-sm-6 col-lg-6">
     <div class="row">
       <div class="col-sm-6">
@@ -465,3 +500,5 @@
     </ul>
   </div><!--/.col-->
 </div><!--/.row-->
+</div>
+</div>

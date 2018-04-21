@@ -33,6 +33,11 @@ export class DashboardComponent implements OnInit {
   var_gender_stats:number[];
   var_arr_ads_stats:number[];
   var_arr_ads_stats_pcnt:number[];
+  var_test:boolean;
+  var_test1:boolean;
+  var_test2:boolean;
+  var_test3:boolean;
+
 
   constructor() { }
   ngOnInit() {
@@ -47,6 +52,10 @@ export class DashboardComponent implements OnInit {
     this.var_nclient_ctr = 1000;
     this.var_adshit_ctr = 22500;
     this.var_weekly_v_ctr = 14002;
+    this.var_test = false;
+    this.var_test1 = false;
+    this.var_test2 = false;
+    this.var_test3 = false;
 
     this.var_total_bookings = this.var_sbook_ctr + this.var_pbook_ctr + this.var_cbook_ctr;
     this.var_r_sb_vs_tb = this.var_sbook_ctr*100 / this.var_total_bookings;
@@ -60,5 +69,38 @@ export class DashboardComponent implements OnInit {
     console.log("this.var_arr_ads_stats_pcnt : " + this.var_arr_ads_stats_pcnt)
   }
 
+  click(){
+    this.var_test = true;
+
+  }
+
+  pbook() {
+    this.var_test1 = true;
+
+  }
+
+  cbook() {
+    this.var_test2 = true;
+  }
+
+  visit() {
+    this.var_test3 = true;
+  }
+
+  hide() {
+      this.var_test = false;
+  }
+
+  hide1(){
+    this.var_test1 = false;
+  }
+
+  hide2(){
+    this.var_test2 = false;
+  }
+
+  hide3(){
+    this.var_test3 = false;
+  }
 
 }
