@@ -3,8 +3,8 @@ import { routerTransition } from '../../router.animations';
 
 @Component({
   selector: 'app-pchat',
-  templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss'],
+  templateUrl: './pchat.component.html',
+  styleUrls: ['./pchat.component.scss'],
   animations: [routerTransition()]
 })
 export class PchatComponent implements OnInit {

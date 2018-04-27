@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PchatComponent } from './chat.component';
+import { PchatComponent } from './pchat.component';
 
 const routes: Routes = [
     { path: '', component: PchatComponent }
