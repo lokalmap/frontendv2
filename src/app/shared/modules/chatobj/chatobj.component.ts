@@ -1,15 +1,17 @@
 import { Component, OnInit,Input, Output, EventEmitter, } from '@angular/core';
 
 @Component({
-    selector: 'app-chat',
+    selector: 'app-chatobj',
     templateUrl: './chatobj.component.html',
     styleUrls: ['./chatobj.component.scss']
 })
 export class ChatobjComponent implements OnInit {
-    @Input() prnthtmlvar:any
+    @Input() chatIDs:any;
     @Output() eventref: EventEmitter<any> = new EventEmitter();
     constructor() { }
+    private prnthtmlvar:any
     ngOnInit() {
+      console.log("chatIDs member", this.chatIDs.m);
       this.prnthtmlvar = [{
         name:'Jack Sparrow',
         timev:'12 mins ago',

@@ -3,16 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { PchatRoutingModule } from './pchat-rtr.module';
 import { PchatComponent } from './pchat.component';
-import { ChatobjModule } from '../../shared';
+import { ChatobjModule, CitemModule } from '../../shared';
 //import { ModalModule } from 'ngx-bootstrap/modal'
 
 @NgModule({
     imports: [
         CommonModule,
         PchatRoutingModule,
-        ChatobjModule
+        ChatobjModule,
+        CitemModule
     ],
-    declarations: [PchatComponent]
+    declarations: [
+      PchatComponent
+    ]
 })
 export class PchatModule {
 }

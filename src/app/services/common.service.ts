@@ -27,6 +27,18 @@ export class CommonService {
         return Observable.throw(err);
       });
     }
+    postchatdb(memGrp:any,name:string): Observable<any>{
+    //  console.log("pvar : ",dbvar);
+    let data = {
+      cdate:Date(),
+      ldate:Date(),
+      name:name
+    }
+      return this.http.post('/ClientAccs',{headers:this.headers_var}).map((response: Response) => response.json() as any).catch(err =>{
+        return Observable.throw(err);
+      });
+    }
+
     postClientAccbyIDCustom(clientidvar:string,dburlvar:string,dbvar:ProductDB): Observable<any>{
       console.log("pvar : ",dbvar);
       return this.http.post('/ClientAccs'+ '/' + clientidvar + '/' + dburlvar, dbvar,{headers:this.headers_var}).map((response: Response) => response.json() as any).catch(err =>{

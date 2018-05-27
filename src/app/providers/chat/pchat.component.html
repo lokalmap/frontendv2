@@ -5,7 +5,7 @@
           <div class="card-header">
             <div class="row">
               <i class="fa fa-comments fa-fw"></i>
-              <h5>Messenger</h5>
+              <h5>Contacts</h5>
             </div>
 
               <div class="input-group">
@@ -20,78 +20,15 @@
           <!-- /.panel-heading -->
           <div class="card-block">
               <ul class="chat">
-                  <li class="left clearfix">
-                      <span class="chat-img pull-left">
-                          <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle">
-                      </span>
-                      <div class="chat-body clearfix">
-                          <div class="header">
-                              <strong class="primary-font">Jack Sparrow</strong>
-                              <small class="pull-right text-muted">
-                                  <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
-                              </small>
-                          </div>
-                          <p>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                          </p>
-                      </div>
-                  </li>
-                  <li class="left clearfix">
-                      <span class="chat-img pull-left">
-                          <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle">
-                      </span>
-                      <div class="chat-body clearfix">
-                          <div class="header">
-                              <strong class="primary-font">Bhaumik Patel</strong>
-                              <small class="pull-right text-muted">
-                                  <i class="fa fa-clock-o fa-fw"></i> 13 mins ago
-                              </small>
-                          </div>
-                          <p>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                          </p>
-                      </div>
-                  </li>
-                  <li class="left clearfix">
-                      <span class="chat-img pull-left">
-                          <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle">
-                      </span>
-                      <div class="chat-body clearfix">
-                          <div class="header">
-                              <strong class="primary-font">Jack Sparrow</strong>
-                              <small class="pull-right text-muted">
-                                  <i class="fa fa-clock-o fa-fw"></i> 14 mins ago
-                              </small>
-                          </div>
-                          <p>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                          </p>
-                      </div>
-                  </li>
-                  <li class="left clearfix">
-                      <span class="chat-img pull-left">
-                          <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle">
-                      </span>
-                      <div class="chat-body clearfix">
-                          <div class="header">
-                              <strong class="primary-font">Bhaumik Patel</strong>
-                              <small class="pull-right text-muted">
-                                  <i class="fa fa-clock-o fa-fw"></i> 15 mins ago
-                              </small>
-                          </div>
-                          <p>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                          </p>
-                      </div>
-                  </li>
+                  <citem [htmlvar]="cItemList[0]" [aleft]="true"></citem>
+                  <citem [htmlvar]="cItemList[1]" [aleft]="true"></citem>
               </ul>
           </div>
           <!-- /.card-body -->
         </div>
     </div>
-    <div  class="col-8">
-      <app-chat></app-chat>
+    <div class="col-8">
+      <app-chatobj [chatIDs]="actvchatgrp"></app-chatobj>
     </div>
   </div>
-
 </div>
