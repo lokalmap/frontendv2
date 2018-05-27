@@ -12,7 +12,9 @@ export class ItemchatComponent implements OnInit {
     @Output() eventref: EventEmitter<any> = new EventEmitter();
     constructor() {
     }
-
     ngOnInit() {
+      if(this.htmlvar.aleft !== undefined){
+        this.aleft = this.htmlvar.aleft;
+      }
     }
 }

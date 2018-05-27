@@ -1,7 +1,7 @@
 <div class="chat-panel card card-default">
     <div class="card-header">
         <i class="fa fa-comments fa-fw"></i>
-        Chat
+        {{chatobjName}}
         <div class=" pull-right" ngbDropdown>
             <button class="btn btn-secondary btn-sm" ngbDropdownToggle>
                 <span class="caret"></span>
@@ -39,64 +39,17 @@
     <!-- /.panel-heading -->
     <div class="card-block">
         <ul class="chat">
-            <itemchat [htmlvar]="prnthtmlvar[0]" [aleft]="true"></itemchat>
-            <li class="right clearfix">
-                <span class="chat-img pull-right">
-                    <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle">
-                </span>
-                <div class="chat-body clearfix">
-                    <div class="header">
-                        <small class=" text-muted">
-                            <i class="fa fa-clock-o fa-fw"></i> 13 mins ago
-                        </small>
-                        <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                    </div>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                    </p>
-                </div>
-            </li>
-            <itemchat [htmlvar]="prnthtmlvar[1]" [aleft]="false"></itemchat>
-            <li class="left clearfix">
-                <span class="chat-img pull-left">
-                    <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle">
-                </span>
-                <div class="chat-body clearfix">
-                    <div class="header">
-                        <strong class="primary-font">Jack Sparrow</strong>
-                        <small class="pull-right text-muted">
-                            <i class="fa fa-clock-o fa-fw"></i> 14 mins ago
-                        </small>
-                    </div>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                    </p>
-                </div>
-            </li>
-            <li class="right clearfix">
-                <span class="chat-img pull-right">
-                    <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle">
-                </span>
-                <div class="chat-body clearfix">
-                    <div class="header">
-                        <small class=" text-muted">
-                            <i class="fa fa-clock-o fa-fw"></i> 15 mins ago
-                        </small>
-                        <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                    </div>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                    </p>
-                </div>
-            </li>
+            <ng-container *ngFor="let itmchtObj of prnthtmlvar;let indx = index">
+              <itemchat [htmlvar]="itmchtObj"></itemchat>
+            </ng-container>
         </ul>
     </div>
     <!-- /.card-body -->
     <div class="card-footer">
         <div class="input-group">
-            <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here...">
+            <textarea #msginput type="text" rows="2" class="form-control input-sm" placeholder="Type your message here..."></textarea>
             <span class="input-group-btn">
-                <button class="btn btn-warning btn-sm" id="btn-chat">
+                <button class="btn btn-warning btn-sm" (click)="sendButton(msginput.value)">
                     Send
                 </button>
             </span>

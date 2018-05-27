@@ -7,6 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter, TemplateRef } from '@an
 })
 export class CitemComponent implements OnInit {
     @Input() htmlvar:any;
+    @Input() i:number;
     @Input() aleft:boolean;
 
     @Output() eventref: EventEmitter<any> = new EventEmitter();

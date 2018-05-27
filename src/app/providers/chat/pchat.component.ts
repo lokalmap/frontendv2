@@ -12,12 +12,19 @@ export class PchatComponent implements OnInit {
   private actvchatgrp:any={m:[]};
   constructor() { }
   ngOnInit() {
-    let curUserID = localStorage.getItem('currentUID');
-    this.actvchatgrp.m = ['guestid123',curUserID];
     this.cItemList = [
-      {name:'name 0',timev:'1 mins ago',msg:'sample msg1',avtrimg:'http://placehold.it/50/FA6F57/fff'},
-      {name:'name 1',timev:'2 mins ago',msg:'sample msg2',avtrimg:'http://placehold.it/50/55C1E7/fff'}
+      {id:'id1',name:'name 0',timev:'1 mins ago',msg:'sample msg1',avtrimg:'http://placehold.it/50/FA6F57/fff'},
+      {id:'id2',name:'name 1',timev:'2 mins ago',msg:'sample msg2',avtrimg:'http://placehold.it/50/55C1E7/fff'}
     ];
+  }
+  citemclicked(indx:number){
+    let curUserID = localStorage.getItem('currentUID');
+    this.actvchatgrp = {
+      name: curUserID + " & " + this.cItemList[indx].id,
+      m:[curUserID,this.cItemList[indx].id],
+      citemID:curUserID + "~" + this.cItemList[indx].id
+    }
+    console.log('id : '+ this.cItemList[indx].id);
   }
 
 }

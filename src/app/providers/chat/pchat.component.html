@@ -20,8 +20,9 @@
           <!-- /.panel-heading -->
           <div class="card-block">
               <ul class="chat">
-                  <citem [htmlvar]="cItemList[0]" [aleft]="true"></citem>
-                  <citem [htmlvar]="cItemList[1]" [aleft]="true"></citem>
+                  <ng-container *ngFor="let cItem of cItemList;let indx = index">
+                    <citem [htmlvar]="cItem" [aleft]="true" [i]="indx" (click)="citemclicked(indx)" ></citem>
+                  </ng-container>
               </ul>
           </div>
           <!-- /.card-body -->
