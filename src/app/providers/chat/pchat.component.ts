@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
-
+import { CommonService } from '../../services/common.service';
 @Component({
   selector: 'app-pchat',
   templateUrl: './pchat.component.html',
@@ -10,7 +10,7 @@ import { routerTransition } from '../../router.animations';
 export class PchatComponent implements OnInit {
   private cItemList:any={};
   private actvchatgrp:any={m:[]};
-  constructor() { }
+  constructor(private commonSrv: CommonService) { }
   ngOnInit() {
     this.cItemList = [
       {id:'id1',name:'name 0',timev:'1 mins ago',msg:'sample msg1',avtrimg:'http://placehold.it/50/FA6F57/fff'},
@@ -25,6 +25,18 @@ export class PchatComponent implements OnInit {
       citemID:curUserID + "~" + this.cItemList[indx].id
     }
     console.log('id : '+ this.cItemList[indx].id);
+  }
+  searchbutton(val:string){
+    console.log("TESTING : ",val)
+    this.commonSrv.seachUser(val).subscribe(res => {
+      console.log("UsersDetails/search API result : ",res)
+      if (res.ack){
+        let tempv = {id:res.ack.id,name:res.ack.username,timev:'1 mins ago',msg:res.ack.email,avtrimg:'http://placehold.it/50/FA6F57/fff'};
+        this.cItemList.push(tempv);
+      }
+    }, err => {
+      console.log("this.commonSrv.seachUser(val) + : " + err)
+    });
   }
 
 }

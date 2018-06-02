@@ -9,9 +9,9 @@
             </div>
 
               <div class="input-group">
-                  <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type the name here...">
+                  <input #seachinput type="text" class="form-control input-sm" placeholder="Type the name here...">
                   <span class="input-group-btn">
-                      <button class="btn btn-success btn-sm" id="btn-chat">
+                      <button class="btn btn-success btn-sm" id="btn-chat" (click)="searchbutton(seachinput.value)">
                           Search
                       </button>
                   </span>

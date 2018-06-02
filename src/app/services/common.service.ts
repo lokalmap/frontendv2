@@ -10,6 +10,12 @@ export class CommonService {
       'Authorization': localStorage.getItem("beJWT")
     });
 
+    seachUser(val: string): Observable<any> {
+        return this.http.get('/UsersDetails/search/' + val,{headers:this.headers_var}).map((res: Response) => res.json()).catch(err =>{
+          return Observable.throw(err);
+        });
+    }
+
     getAll(): Observable<any> {
         console.log("safassg");
         return this.http.get('/testmodel').map((response: Response) => response.json()).catch(err =>{
