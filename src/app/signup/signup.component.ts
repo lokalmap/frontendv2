@@ -7,7 +7,6 @@ import { AlertService, UserService } from '../services/index';
 
 
 @Component({
-    moduleId: module.id,
     selector: 'app-signup',
     templateUrl: './signup.component.html',
     styleUrls: ['./signup.component.scss'],

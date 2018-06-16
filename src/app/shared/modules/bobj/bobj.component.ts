@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Component, OnInit, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service'
 @Component({
     selector: 'bobj',
     templateUrl: './bobj.component.html'

@@ -14,6 +14,7 @@ export class CustomHttp extends Http {
     }
 
     get(url: string, options?: RequestOptionsArgs): Observable<Response> {
+      console.log("asdfadsfas");
 
       if (url.indexOf('/assets/i18n') !== -1) {
           return super.get('http://localhost:4200' + url, this.addJwt(options)).catch(this.handleError);

@@ -1,6 +1,6 @@
 import { Component, OnInit,TemplateRef } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service'
 //npm install ngx-bootstrap --save
 @Component({
   selector: 'app-dashboard',

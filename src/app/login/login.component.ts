@@ -5,7 +5,6 @@ import { AlertService, AuthenticationService, UserService } from '../services/in
 import { routerTransition } from '../router.animations';
 
 @Component({
-    moduleId: module.id,
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],

@@ -24,6 +24,7 @@ export class InfoeditComponent implements OnInit {
   ngOnInit() {
     this.returl_flg = true;
     this.renderflg = false;
+    /*
     this.actvroute.params.switchMap((params:Params) => {
       let id = params['id'];
       console.log("id: " + id);
@@ -47,6 +48,7 @@ export class InfoeditComponent implements OnInit {
             console.log("error getUserByID(CUID): " + err);
           });
       });
+      */
       this.idstring = this.userinfo._id;
       console.log("id :    " + this.idstring)
       this.renderflg = true;
